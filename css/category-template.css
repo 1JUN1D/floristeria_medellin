@@ -1,0 +1,382 @@
+/* =====================================================
+   CATEGORY TEMPLATE CSS
+   Template reutilizable para páginas de categorías secundarias
+   ===================================================== */
+
+/* ===================================
+   HERO SECTION CON BACKGROUND
+   =================================== */
+.category-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.category-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.category-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, 
+        rgba(13, 13, 13, 0.85) 0%, 
+        rgba(242, 92, 147, 0.75) 50%,
+        rgba(242, 215, 182, 0.65) 100%
+    );
+    z-index: 1;
+}
+
+.category-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+.category-hero-content .breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.category-hero-content .breadcrumb a {
+    color: #F2D7B6;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.category-hero-content .breadcrumb a:hover {
+    color: #ffffff;
+}
+
+.category-hero-content .breadcrumb .separator {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.category-hero-content .breadcrumb .current {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.category-hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-intro {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.8;
+    font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   SERVICES SECTION
+   =================================== */
+.services-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #0D0D0D;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+}
+
+.service-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-left: 4px solid #F25C93;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(242, 92, 147, 0.15);
+    border-left-color: #F2D7B6;
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(242, 92, 147, 0.3);
+}
+
+.service-icon svg {
+    color: #ffffff;
+}
+
+.service-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #0D0D0D;
+    margin-bottom: 1.5rem;
+}
+
+.service-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.service-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.feature-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(242, 92, 147, 0.08);
+    color: #F25C93;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.btn-service {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #F2D7B6 0%, #F2E6D8 100%);
+    color: #0D0D0D;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(242, 215, 182, 0.3);
+}
+
+.btn-service:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(242, 215, 182, 0.4);
+    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
+    color: #ffffff;
+}
+
+/* ===================================
+   CTA SECTION
+   =================================== */
+.category-cta {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0D0D0D 0%, #1a1a1a 100%);
+    text-align: center;
+}
+
+.category-cta .cta-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.category-cta .cta-content p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.category-cta .btn-primary {
+    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
+}
+
+.category-cta .btn-primary:hover {
+    background: linear-gradient(135deg, #F2D7B6 0%, #F2E6D8 100%);
+    color: #0D0D0D;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-hero-content h1 {
+        font-size: 2.75rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-hero {
+        min-height: 50vh;
+        margin-top: 70px;
+    }
+    
+    .category-hero-content {
+        padding: 2rem 1rem;
+    }
+    
+    .category-hero-content h1 {
+        font-size: 2.25rem;
+    }
+    
+    .hero-intro {
+        font-size: 1rem;
+    }
+    
+    .services-section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .service-card {
+        padding: 2rem;
+    }
+    
+    .service-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .category-cta {
+        padding: 60px 0;
+    }
+    
+    .category-cta .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .category-cta .cta-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-hero-content h1 {
+        font-size: 1.875rem;
+    }
+    
+    .service-features {
+        flex-direction: column;
+    }
+    
+    .feature-tag {
+        text-align: center;
+    }
+    
+    .btn-service {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ===================================
+   ANIMACIONES
+   =================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.service-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.service-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.service-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.service-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* ===================================
+   UTILIDADES ESPECÍFICAS
+   =================================== */
+.text-highlight {
+    color: #F25C93;
+    font-weight: 600;
+}
+
+.text-accent {
+    color: #F2D7B6;
+    font-weight: 600;
+}
+
+/* Espaciado para secciones importadas */
+#service-areas-container,
+#contact-info-container {
+    margin-top: 0;
+}
+
+/* Asegurar que el footer no tenga margen superior adicional */
+#footer-container {
+    margin-top: 0;
+}

@@ -1,0 +1,509 @@
+/* =====================================================
+   SERVICE PAGE TEMPLATE CSS
+   Template reutilizable para páginas de servicios específicos
+   ===================================================== */
+
+/* ===================================
+   HERO SECTION PARA SERVICIOS
+   =================================== */
+.service-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+}
+
+.service-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.service-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+.service-hero-content .breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.service-hero-content .breadcrumb a {
+    color: #F25C93;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.service-hero-content .breadcrumb a:hover {
+    color: #F27EA9;
+}
+
+.service-hero-content .breadcrumb .separator {
+    color: #999;
+}
+
+.service-hero-content .breadcrumb .current {
+    color: #0D0D0D;
+    font-weight: 600;
+}
+
+.service-hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #0D0D0D;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.service-hero-content .service-tagline {
+    font-size: 1.25rem;
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.service-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===================================
+   MAIN CONTENT SECTION
+   =================================== */
+.service-content-section {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.service-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.service-main-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    color: #0D0D0D;
+    margin-bottom: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.service-main-content h2:first-child {
+    margin-top: 0;
+}
+
+.service-main-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: #F25C93;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.service-main-content p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.service-main-content ul,
+.service-main-content ol {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.service-main-content li {
+    margin-bottom: 0.75rem;
+}
+
+.service-highlight-box {
+    background: linear-gradient(135deg, rgba(242, 92, 147, 0.05) 0%, rgba(242, 215, 182, 0.05) 100%);
+    border-left: 4px solid #F25C93;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.service-highlight-box h3 {
+    margin-top: 0;
+}
+
+.service-price-box {
+    background: #f9f9f9;
+    border: 2px solid #F25C93;
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.service-price-box .price-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.service-price-box .price-range {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #F25C93;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.service-price-box .price-note {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* ===================================
+   SIDEBAR
+   =================================== */
+.service-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.sidebar-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #0D0D0D;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-features-list li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+}
+
+.sidebar-features-list li:last-child {
+    border-bottom: none;
+}
+
+.sidebar-features-list li::before {
+    content: '✓';
+    color: #F2D7B6;
+    font-weight: bold;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.sidebar-cta-card {
+    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
+    color: #ffffff;
+    border: none;
+}
+
+.sidebar-cta-card h3 {
+    color: #ffffff;
+}
+
+.sidebar-cta-card p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-cta-card .btn {
+    background: #ffffff;
+    color: #F25C93;
+    width: 100%;
+    justify-content: center;
+}
+
+.sidebar-cta-card .btn:hover {
+    background: #F2D7B6;
+    color: #0D0D0D;
+}
+
+/* ===================================
+   FEATURES GRID
+   =================================== */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 2rem;
+    background: #fafafa;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(242, 92, 147, 0.15);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2.5rem;
+}
+
+.feature-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #0D0D0D;
+    margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ===================================
+   IMAGE GALLERY
+   =================================== */
+.service-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+/* ===================================
+   FAQ SECTION
+   =================================== */
+.faq-item {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: #0D0D0D;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.faq-answer {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* ===================================
+   RELATED SERVICES
+   =================================== */
+.related-services-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+}
+
+.related-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.related-service-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.related-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(242, 92, 147, 0.15);
+}
+
+.related-service-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.related-service-content {
+    padding: 1.5rem;
+}
+
+.related-service-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #0D0D0D;
+    margin-bottom: 0.75rem;
+}
+
+.related-service-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 1024px) {
+    .service-content-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .service-sidebar {
+        position: static;
+    }
+    
+    .service-hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-hero {
+        min-height: 40vh;
+        margin-top: 70px;
+    }
+    
+    .service-hero-content {
+        padding: 2rem 1rem;
+    }
+    
+    .service-hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .service-hero-content .service-tagline {
+        font-size: 1rem;
+    }
+    
+    .service-content-section {
+        padding: 60px 0;
+    }
+    
+    .service-main-content h2 {
+        font-size: 1.75rem;
+    }
+    
+    .service-main-content h3 {
+        font-size: 1.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-cta-buttons {
+        flex-direction: column;
+    }
+    
+    .service-cta-buttons .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-hero-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .service-main-content p {
+        font-size: 1rem;
+    }
+    
+    .service-price-box .price-range {
+        font-size: 2rem;
+    }
+}
+
+/* ===================================
+   UTILITIES
+   =================================== */
+.text-center {
+    text-align: center;
+}
+
+.mb-large {
+    margin-bottom: 3rem;
+}
+
+.mb-medium {
+    margin-bottom: 2rem;
+}
+
+.mb-small {
+    margin-bottom: 1rem;
+}
