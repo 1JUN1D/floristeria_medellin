@@ -136,7 +136,7 @@ function orderProduct(code, name, price) {
     }).format(price);
     
     const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?`;
-    const whatsappUrl = `https://wa.me/573114701386?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/573243705155?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
 }

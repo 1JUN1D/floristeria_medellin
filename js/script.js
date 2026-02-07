@@ -109,16 +109,30 @@ function toggleMobileMenu() {
 // WHATSAPP TRACKING
 // ===================================
 function trackWhatsAppClick(source) {
-    // Aquí puedes agregar tracking de Google Analytics o similar
+    // Enviar evento a Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'whatsapp_click', {
+            'event_category': 'Contact',
+            'event_label': source,
+            'value': 1
+        });
+    }
     console.log(`WhatsApp click from: ${source}`);
-    
-    // Ejemplo con Google Analytics (descomenta si lo usas)
-    // if (typeof gtag !== 'undefined') {
-    //     gtag('event', 'whatsapp_click', {
-    //         'event_category': 'engagement',
-    //         'event_label': source
-    //     });
-    // }
+}
+
+// ===================================
+// CATALOG TRACKING
+// ===================================
+function trackCatalogOpen(source) {
+    // Enviar evento a Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'catalog_open', {
+            'event_category': 'Navigation',
+            'event_label': source,
+            'value': 1
+        });
+    }
+    console.log(`Catalog opened from: ${source}`);
 }
 
 // ===================================
