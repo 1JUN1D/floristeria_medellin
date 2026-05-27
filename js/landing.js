@@ -167,7 +167,7 @@ function orderWA(code, name, price) {
     // Google Ads conversion tracking
     if (typeof gtag !== 'undefined') {
         gtag('event', 'conversion', {
-            'send_to': 'AW-17951767999/DlVjCIeAg_gbEL_7iPBC',
+            'send_to': 'AW-18193290564/6qQPCNLlpLQcEMSqnuND',
             'value': price,
             'currency': 'COP'
         });
@@ -192,7 +192,7 @@ function orderWA(code, name, price) {
 function contactWA(source, customMsg) {
     if (typeof gtag !== 'undefined') {
         gtag('event', 'conversion', {
-            'send_to': 'AW-17951767999/DlVjCIeAg_gbEL_7iPBC'
+            'send_to': 'AW-18193290564/6qQPCNLlpLQcEMSqnuND'
         });
     }
 
