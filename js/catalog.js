@@ -84,7 +84,7 @@ function createProductCard(product) {
                     <span class="price-label">Precio</span>
                     <div class="product-price">${formattedPrice}</div>
                 </div>
-                <a href="#" class="btn-order" onclick="orderProduct('COD_${product.code}', '${product.name}', ${product.price}); return false;">
+                <a href="#" class="btn-order" onclick="orderProduct('COD_${product.code}', '${product.name}', ${product.price}, '${product.image}'); return false;">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
@@ -101,7 +101,6 @@ function createProductCard(product) {
 function filterProducts(category) {
     currentFilter = category;
 
-    // Actualizar botones activos
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -110,8 +109,6 @@ function filterProducts(category) {
     }
 
     renderProducts();
-
-    // Scroll suave al inicio de productos
     document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -155,9 +152,8 @@ function closeLightbox() {
     document.body.style.overflow = '';
 }
 
-// Ordenar producto
-function orderProduct(code, name, price) {
-    // Enviar evento a Google Analytics
+// Ordenar producto - envía mensaje a WhatsApp con código, nombre, precio y URL de la foto
+function orderProduct(code, name, price, image) {
     if (typeof gtag !== 'undefined') {
         gtag('event', 'product_order', {
             'event_category': 'Catalog',
@@ -173,16 +169,25 @@ function orderProduct(code, name, price) {
         minimumFractionDigits: 0
     }).format(price);
 
-    const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?`;
-    const whatsappUrl = `https://wa.me/573148624244?text=${encodeURIComponent(message)}`;
+    // Construir URL absoluta de la foto
+    let photoLine = '';
+    if (image) {
+        try {
+            const photoUrl = new URL(image, document.baseURI).href;
+            photoLine = `\nFoto: ${photoUrl}`;
+        } catch (e) {
+            photoLine = `\nFoto: ${image}`;
+        }
+    }
 
+    const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?${photoLine}`;
+    const whatsappUrl = `https://wa.me/573148624244?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
 
 // Scroll to top
 function initScrollTop() {
     const scrollBtn = document.getElementById('scrollTop');
-
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
             scrollBtn.classList.add('visible');
@@ -197,4 +202,8 @@ function scrollToTop() {
 }
 
 // Cerrar lightbox con tecla ESC
-docu
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});

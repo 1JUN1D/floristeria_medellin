@@ -74,8 +74,8 @@ const products = [
 ];
 
 // --- VARIABLES GLOBALES ---
-let currentLandingFilter = 'priority'; // 'priority' = orden por defecto de la landing
-let LANDING_PRIORITY_TAG = ''; // Se establece por cada landing
+let currentLandingFilter = 'priority';
+let LANDING_PRIORITY_TAG = '';
 
 // --- FORMATEO DE PRECIO ---
 function formatCOP(price) {
@@ -129,7 +129,7 @@ function createCard(product) {
                     <span class="label">Precio</span>
                     <span class="price">${price}</span>
                 </div>
-                <a href="#" class="btn-order-landing" onclick="orderWA('COD_${product.code}', '${product.name.replace(/'/g, "\\'")}', ${product.price}); return false;">
+                <a href="#" class="btn-order-landing" onclick="orderWA('COD_${product.code}', '${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.image}'); return false;">
                     🛒 Pedir
                 </a>
             </div>
@@ -163,8 +163,8 @@ function filterLanding(filter, el) {
 }
 
 // --- WHATSAPP ORDER + GOOGLE ADS CONVERSION ---
-function orderWA(code, name, price) {
-    // Google Ads conversion tracking
+// Envía mensaje a WhatsApp con código, nombre, precio y URL absoluta de la foto
+function orderWA(code, name, price, image) {
     if (typeof gtag !== 'undefined') {
         gtag('event', 'conversion', {
             'send_to': 'AW-18193290564/6qQPCNLlpLQcEMSqnuND',
@@ -173,7 +173,6 @@ function orderWA(code, name, price) {
         });
     }
 
-    // GA4 event
     if (typeof gtag !== 'undefined') {
         gtag('event', 'product_order', {
             'event_category': 'Catalog',
@@ -184,7 +183,19 @@ function orderWA(code, name, price) {
     }
 
     const formattedPrice = formatCOP(price);
-    const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?`;
+
+    // Construir URL absoluta de la foto (las landings están en /landing-pages/, las imágenes son 'assets/catalog/...')
+    let photoLine = '';
+    if (image) {
+        try {
+            const photoUrl = new URL('../' + image, document.baseURI).href;
+            photoLine = `\nFoto: ${photoUrl}`;
+        } catch (e) {
+            photoLine = `\nFoto: ${image}`;
+        }
+    }
+
+    const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?${photoLine}`;
     window.open(`https://wa.me/573148624244?text=${encodeURIComponent(message)}`, '_blank');
 }
 
