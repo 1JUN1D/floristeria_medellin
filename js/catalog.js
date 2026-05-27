@@ -174,7 +174,7 @@ function orderProduct(code, name, price) {
     }).format(price);
 
     const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?`;
-    const whatsappUrl = `https://wa.me/573146218513?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/573148624244?text=${encodeURIComponent(message)}`;
 
     window.open(whatsappUrl, '_blank');
 }
@@ -197,8 +197,4 @@ function scrollToTop() {
 }
 
 // Cerrar lightbox con tecla ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeLightbox();
-    }
-});
+docu
