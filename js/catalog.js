@@ -1,8 +1,10 @@
 // ===================================
 // FUNCIONES DEL CATÁLOGO
+// Floristeria Toda Ocasion
 // ===================================
 
 let currentFilter = 'all';
+let currentSearch = '';
 
 // Cargar productos al iniciar
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,22 +17,37 @@ function renderProducts() {
     const grid = document.getElementById('productsGrid');
     const counter = document.getElementById('resultsCounter');
     const emptyState = document.getElementById('emptyState');
-    
+
     grid.innerHTML = '';
-    
-    const filtered = currentFilter === 'all' 
-        ? products 
-        : products.filter(p => p.category.includes(currentFilter) || p.category === currentFilter);
-    
+
+    // Aplicar filtro por categoría
+    let filtered = currentFilter === 'all'
+        ? [...products]
+        : products.filter(p => p.category.toLowerCase().includes(currentFilter.toLowerCase()));
+
+    // Aplicar búsqueda por nombre o código
+    if (currentSearch.trim() !== '') {
+        const term = currentSearch.toLowerCase().trim();
+        filtered = filtered.filter(p =>
+            p.name.toLowerCase().includes(term) ||
+            String(p.code).toLowerCase().includes(term) ||
+            p.category.toLowerCase().includes(term) ||
+            p.description.toLowerCase().includes(term)
+        );
+    }
+
+    // Ordenar por precio ascendente (menor a mayor)
+    filtered.sort((a, b) => a.price - b.price);
+
     if (filtered.length === 0) {
         emptyState.classList.add('active');
         counter.innerHTML = '';
         return;
     }
-    
+
     emptyState.classList.remove('active');
     counter.innerHTML = `Mostrando <strong>${filtered.length}</strong> productos`;
-    
+
     filtered.forEach(product => {
         const card = createProductCard(product);
         grid.appendChild(card);
@@ -42,13 +59,13 @@ function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.setAttribute('data-category', product.category);
-    
+
     const formattedPrice = new Intl.NumberFormat('es-CO', {
         style: 'currency',
         currency: 'COP',
         minimumFractionDigits: 0
     }).format(product.price);
-    
+
     card.innerHTML = `
         <div class="product-image-container" onclick="openLightbox('${product.image}', 'COD_${product.code} - ${product.name}', '${formattedPrice}')">
             <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
@@ -76,24 +93,45 @@ function createProductCard(product) {
             </div>
         </div>
     `;
-    
+
     return card;
 }
 
 // Filtrar productos
 function filterProducts(category) {
     currentFilter = category;
-    
+
     // Actualizar botones activos
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.classList.add('active');
-    
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
+
     renderProducts();
-    
+
     // Scroll suave al inicio de productos
     document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Buscar productos
+function searchProducts() {
+    const input = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('searchClear');
+    currentSearch = input.value;
+    clearBtn.style.display = currentSearch ? 'block' : 'none';
+    renderProducts();
+}
+
+// Limpiar búsqueda
+function clearSearch() {
+    const input = document.getElementById('searchInput');
+    input.value = '';
+    currentSearch = '';
+    document.getElementById('searchClear').style.display = 'none';
+    renderProducts();
+    input.focus();
 }
 
 // Abrir lightbox
@@ -102,7 +140,7 @@ function openLightbox(image, title, price) {
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxPrice = document.getElementById('lightboxPrice');
-    
+
     lightboxImage.src = image;
     lightboxTitle.textContent = title;
     lightboxPrice.textContent = price;
@@ -128,23 +166,23 @@ function orderProduct(code, name, price) {
             'product_name': name
         });
     }
-    
+
     const formattedPrice = new Intl.NumberFormat('es-CO', {
         style: 'currency',
         currency: 'COP',
         minimumFractionDigits: 0
     }).format(price);
-    
+
     const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?`;
-    const whatsappUrl = `https://wa.me/573243705155?text=${encodeURIComponent(message)}`;
-    
+    const whatsappUrl = `https://wa.me/573146218513?text=${encodeURIComponent(message)}`;
+
     window.open(whatsappUrl, '_blank');
 }
 
 // Scroll to top
 function initScrollTop() {
     const scrollBtn = document.getElementById('scrollTop');
-    
+
     window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
             scrollBtn.classList.add('visible');

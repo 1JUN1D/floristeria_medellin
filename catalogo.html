@@ -13,9 +13,9 @@
 </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Catálogo completo de Imperial Love en Medellín. Descubre nuestra colección de arreglos florales, ramos, bouquets y regalos especiales con entrega a domicilio.">
-    <meta name="keywords" content="catálogo flores Medellín, ramos, bouquets, arreglos florales, Imperial Love">
-    <title>Catálogo de Flores - Imperial Love Medellín | Ramos y Arreglos Florales</title>
+    <meta name="description" content="Catálogo completo de Floristeria Toda Ocasion en Medellín. Descubre nuestra colección de arreglos florales, ramos, bouquets y regalos especiales con entrega a domicilio.">
+    <meta name="keywords" content="catálogo flores Medellín, ramos, bouquets, arreglos florales, Floristeria Toda Ocasion">
+    <title>Catálogo de Flores - Floristeria Toda Ocasion Medellín | Ramos y Arreglos Florales</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,19 +41,35 @@
         </div>
     </section>
 
+    <!-- Search Section -->
+    <section class="catalog-search">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nombre o código (ej: 001, Rosas Rojas, Cumpleaños...)" oninput="searchProducts()">
+                <button class="search-clear" onclick="clearSearch()" id="searchClear" style="display:none;">×</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Filters Section -->
     <section class="catalog-filters">
         <div class="container">
             <div class="filters-container">
                 <span class="filter-label">Filtrar por:</span>
                 <button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
-                <button class="filter-btn" onclick="filterProducts('Arreglos pequeños en rosas')">Arreglos Pequeños</button>
-                <button class="filter-btn" onclick="filterProducts('Combinación de Rosas')">Combinación</button>
                 <button class="filter-btn" onclick="filterProducts('Rosas Rojas')">Rosas Rojas</button>
+                <button class="filter-btn" onclick="filterProducts('Rosas Rosadas')">Rosas Rosadas</button>
+                <button class="filter-btn" onclick="filterProducts('Rosas Blancas')">Rosas Blancas</button>
                 <button class="filter-btn" onclick="filterProducts('Girasoles')">Girasoles</button>
-                <button class="filter-btn" onclick="filterProducts('Lirios')">Lirios</button>
-                <button class="filter-btn" onclick="filterProducts('Base')">En Base</button>
-                <button class="filter-btn" onclick="filterProducts('ANCHETAS')">Anchetas</button>
+                <button class="filter-btn" onclick="filterProducts('Rosas y Girasoles')">Rosas y Girasoles</button>
+                <button class="filter-btn" onclick="filterProducts('Combinación de Rosas')">Combinación</button>
+                <button class="filter-btn" onclick="filterProducts('Anchetas')">Anchetas</button>
+                <button class="filter-btn" onclick="filterProducts('Desayunos Sorpresa')">Desayunos</button>
+                <button class="filter-btn" onclick="filterProducts('Rosas con Chocolates')">Con Chocolates</button>
+                <button class="filter-btn" onclick="filterProducts('Caja')">Cajas</button>
+                <button class="filter-btn" onclick="filterProducts('Grados')">Grados</button>
+                <button class="filter-btn" onclick="filterProducts('Bebés')">Bebés</button>
+                <button class="filter-btn" onclick="filterProducts('Fúnebres')">Fúnebres</button>
             </div>
         </div>
     </section>
@@ -69,36 +85,3 @@
                 <h3>No se encontraron productos</h3>
                 <p>Intenta con otro filtro</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <div class="lightbox-content" onclick="event.stopPropagation()">
-            <button class="lightbox-close" onclick="closeLightbox()">×</button>
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
-            <div class="lightbox-info">
-                <h3 id="lightboxTitle"></h3>
-                <p id="lightboxPrice"></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
-        </svg>
-    </button>
-
-    <!-- Footer -->
-    <div id="footer-container"></div>
-
-    <!-- WhatsApp Button -->
-    <div id="whatsapp-button-container"></div>
-
-    <script src="js/script.js"></script>
-    <script src="js/catalog-data.js"></script>
-    <script src="js/catalog.js"></script>
-</body>
-</html>

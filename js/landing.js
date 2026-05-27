@@ -1,171 +1,76 @@
 // ===================================
-// LANDING PAGE JS - Imperial Love Medellín
+// LANDING PAGE JS - Floristeria Toda Ocasion Medellín
 // Catálogo con prioridad por categoría + Conversiones Google Ads
 // ===================================
 
 // --- DATOS DEL CATÁLOGO COMPLETO ---
 const products = [
-    // Arreglos pequeños en rosas
-    { id: 1, code: "001", category: "Arreglos pequeños en rosas", tags: ["rosas"], name: "Primer Latido", description: "Delicado detalle con 3 rosas frescas que expresan cariño sincero. Perfecto para gestos espontáneos.", price: 50000, image: "assets/catalog/cod_001.webp" },
-    { id: 2, code: "002", category: "Arreglos pequeños en rosas", tags: ["rosas"], name: "Gesto Espontáneo", description: "Ramo encantador con 8 rosas envueltas con elegancia. Ideal para sorpresas inesperadas.", price: 75000, image: "assets/catalog/cod_002.webp" },
-    { id: 3, code: "003", category: "Arreglos pequeños en rosas", tags: ["rosas"], name: "Dulce Inicio", description: "Bouquet tierno de 8 rosas cuidadosamente seleccionadas. Transmite amor en su forma más pura.", price: 75000, image: "assets/catalog/cod_003.webp" },
-    { id: 4, code: "004", category: "Arreglos pequeños en rosas", tags: ["rosas"], name: "Ternura Sincera", description: "Arreglo armonioso con 10 rosas que hablan sin palabras. Perfecto para momentos especiales.", price: 100000, image: "assets/catalog/cod_004.webp" },
-    { id: 5, code: "005", category: "Arreglos pequeños en rosas", tags: ["rosas"], name: "Conexión Natural", description: "Hermoso ramo de 10 rosas con presentación sofisticada. Sentimientos profundos con elegancia.", price: 118750, image: "assets/catalog/cod_005.webp" },
-    { id: 6, code: "006", category: "Arreglos pequeños en rosas", tags: ["rosas"], name: "Encanto Clásico", description: "Bouquet tradicional con 12 rosas que nunca pasan de moda. Símbolo eterno de amor.", price: 137500, image: "assets/catalog/cod_006.webp" },
-
-    // Combinación de Rosas
-    { id: 7, code: "007", category: "Combinación de Rosas", tags: ["rosas"], name: "Fusión Armoniosa", description: "Ramo vibrante de 20 rosas en combinación perfecta de colores. Alegría, amor y buenos deseos.", price: 162500, image: "assets/catalog/cod_007.webp" },
-    { id: 8, code: "008", category: "Combinación de Rosas", tags: ["rosas"], name: "Elegancia Mixta", description: "Arreglo sofisticado con 24 rosas en tonos complementarios. Estilo y distinción única.", price: 181250, image: "assets/catalog/cod_008.webp" },
-    { id: 9, code: "009", category: "Combinación de Rosas", tags: ["rosas"], name: "Contraste Perfecto", description: "Bouquet equilibrado de 24 rosas con colores contrastantes. Ideal para personalidades únicas.", price: 181250, image: "assets/catalog/cod_009.webp" },
-    { id: 10, code: "010", category: "Combinación de Rosas", tags: ["rosas"], name: "Dualidad Romántica", description: "Hermoso conjunto de 24 rosas que combina pasión y delicadeza. Sentimientos profundos.", price: 187500, image: "assets/catalog/cod_010.webp" },
-    { id: 11, code: "011", category: "Combinación de Rosas", tags: ["rosas"], name: "Sinfonía de Colores", description: "Arreglo premium con 24 rosas en mezcla cuidadosamente seleccionada. Historia de amor.", price: 187500, image: "assets/catalog/cod_011.webp" },
-    { id: 12, code: "012", category: "Combinación de Rosas", tags: ["rosas"], name: "Impacto Dual", description: "Ramo imponente de 48 rosas en combinación espectacular. Huella imborrable en el corazón.", price: 262500, image: "assets/catalog/cod_012.webp" },
-    { id: 13, code: "013", category: "Combinación de Rosas", tags: ["rosas"], name: "Abundancia Mixta", description: "Bouquet abundante con 48 rosas en fusión armoniosa de tonos. Sorprender en grande.", price: 262500, image: "assets/catalog/cod_013.webp" },
-    { id: 14, code: "014", category: "Combinación de Rosas", tags: ["rosas"], name: "Explosión de Amor", description: "Arreglo espectacular de 48 rosas que desbordan emoción. Declaraciones importantes.", price: 262500, image: "assets/catalog/cod_014.webp" },
-    { id: 15, code: "015", category: "Combinación de Rosas", tags: ["rosas"], name: "Grandeza Combinada", description: "Ramo majestuoso con 48 rosas en presentación premium. Amor sin límites.", price: 262500, image: "assets/catalog/cod_015.webp" },
-
-    // Unicolor Rosas
-    { id: 17, code: "017", category: "Unicolor Rosas", tags: ["rosas"], name: "Pureza Monocromática", description: "Elegante bouquet de 24 rosas en un solo tono. La simplicidad que habla más fuerte.", price: 156250, image: "assets/catalog/cod_017.webp" },
-    { id: 18, code: "018_a", category: "Unicolor Rosas", tags: ["rosas"], name: "Esencia Única", description: "Arreglo sofisticado con 24 rosas del mismo color. Mensaje claro y profundo.", price: 175000, image: "assets/catalog/cod_018_a.webp" },
-    { id: 18.1, code: "018_b", category: "Unicolor Rosas", tags: ["rosas"], name: "Monocromo Elegante", description: "Ramo armonioso de 24 rosas unicolor con presentación impecable. Elegancia pura.", price: 175000, image: "assets/catalog/cod_018_b.webp" },
-    { id: 19, code: "019", category: "Unicolor Rosas", tags: ["rosas"], name: "Intensidad Unicolor", description: "Bouquet imponente con 48 rosas en tono único. Impacto visual y emocional.", price: 262500, image: "assets/catalog/cod_019.webp" },
-
-    // Rosas Rojas
-    { id: 20, code: "020", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Pasión Clásica", description: "Ramo tradicional de 24 rosas rojas que simbolizan amor verdadero. Nunca falla.", price: 150000, image: "assets/catalog/cod_020.webp" },
-    { id: 21, code: "021", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Fuego del Alma", description: "Arreglo intenso con 48 rosas rojas que arden de pasión. Aniversarios memorables.", price: 250000, image: "assets/catalog/cod_021.webp" },
-    { id: 22, code: "022", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Declaración Intensa", description: "Bouquet poderoso de 60 rosas rojas que no necesitan palabras. Amor sin límites.", price: 312500, image: "assets/catalog/cod_022.webp" },
-    { id: 23, code: "023", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Amor Desbordante", description: "Ramo espectacular con 72 rosas rojas en presentación premium. Aman en grande.", price: 350000, image: "assets/catalog/cod_023.webp" },
-    { id: 24, code: "024", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Centenario de Pasión", description: "Arreglo majestuoso de 100 rosas rojas que roban el aliento. Momentos eternos.", price: 481250, image: "assets/catalog/cod_024.webp" },
-    { id: 25, code: "025", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Océano Rojo", description: "Bouquet monumental con 200 rosas rojas que inundan de amor. Extraordinario.", price: 875000, image: "assets/catalog/cod_025.webp" },
-    { id: 26, code: "026", category: "Rosas Rojas", tags: ["rosas", "rosas rojas"], name: "Universo Carmesí", description: "Ramo colosal de 400 rosas rojas. Impactar como nunca antes en la vida.", price: 1575000, image: "assets/catalog/cod_026.webp" },
-
-    // Rosas y Accesorios
-    { id: 27, code: "027", category: "ROSAS Y ACCESORIOS", tags: ["rosas", "cumpleaños"], name: "Corona de Ternura", description: "Ramo elegante con 24 rosas y corona decorativa. Detalle que hace sentir especial.", price: 187500, image: "assets/catalog/cod_027.webp" },
-    { id: 28, code: "028", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Mensaje Personalizado", description: "Arreglo romántico de 24 rosas con listón y tu mensaje único.", price: 225000, image: "assets/catalog/cod_028.webp" },
-    { id: 29, code: "029", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Declaración Grande", description: "Bouquet imponente de 48 rosas con listón personalizado premium.", price: 287500, image: "assets/catalog/cod_029.webp" },
-    { id: 30, code: "030", category: "ROSAS Y ACCESORIOS", tags: ["rosas", "cumpleaños"], name: "Vuelo de Amor", description: "Ramo con 24 rosas, corona y mariposa decorativa. Amor y transformación.", price: 200000, image: "assets/catalog/cod_030.webp" },
-    { id: 31, code: "031", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Guardián Tierno", description: "Arreglo dulce de 24 rosas con vela decorativa en forma de oso.", price: 212500, image: "assets/catalog/cod_031.webp" },
-    { id: 32, code: "032", category: "ROSAS Y ACCESORIOS", tags: ["rosas", "cumpleaños"], name: "Transformación Doble", description: "Bouquet con 24 rosas, corona grande y mariposas delicadas.", price: 200000, image: "assets/catalog/cod_032.webp" },
-    { id: 32.1, code: "032_a", category: "ROSAS Y ACCESORIOS", tags: ["rosas", "cumpleaños"], name: "Logro Coronado", description: "Ramo de 24 rosas con corona y birrete decorativo. Éxitos académicos.", price: 150000, image: "assets/catalog/cod_032_a.webp" },
-    { id: 33, code: "033", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Lazo del Corazón", description: "Arreglo con 24 rosas, corona y listón elegante. Amor cuidadosamente expresado.", price: 206250, image: "assets/catalog/cod_033.webp" },
-    { id: 34, code: "034", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Guardián del Amor", description: "Bouquet de 24 rosas con corona, vela de oso y listón personalizado.", price: 262500, image: "assets/catalog/cod_034.webp" },
-    { id: 35, code: "035", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Abrazo Gigante", description: "Ramo abundante de 48 rosas con vela decorativa grande de oso.", price: 280600, image: "assets/catalog/cod_035.webp" },
-    { id: 36, code: "036", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Vuelo Personalizado", description: "Arreglo premium con 48 rosas, corona, mariposas y listón personalizado.", price: 325000, image: "assets/catalog/cod_036.webp" },
-    { id: 37, code: "037", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Dulzura Completa", description: "Bouquet de 48 rosas con deliciosos dulces selectos. Romance y sabor.", price: 337500, image: "assets/catalog/cod_037.webp" },
-    { id: 38, code: "038", category: "ROSAS Y ACCESORIOS", tags: ["rosas"], name: "Dulce Transformación", description: "Ramo con 48 rosas, mariposas decorativas y dulces gourmet.", price: 362500, image: "assets/catalog/cod_038.webp" },
-
-    // Lirios y Rosas
-    { id: 39, code: "039", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Dúo Delicado", description: "Arreglo con 10 rosas y 3 lirios elegantes. Romance con pureza.", price: 156250, image: "assets/catalog/cod_039.webp" },
-    { id: 40, code: "040", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Armonía Dual", description: "Bouquet de 18 rosas y 2 lirios frescos. Amor sereno y profundo.", price: 187500, image: "assets/catalog/cod_040.webp" },
-    { id: 41, code: "041", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Equilibrio Natural", description: "Ramo con 20 rosas y 4 lirios majestuosos. Belleza en perfecta proporción.", price: 187500, image: "assets/catalog/cod_041.webp" },
-    { id: 42, code: "042", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Fusión Elegante", description: "Arreglo de 24 rosas y 5 lirios aromáticos. Clase y distinción.", price: 237500, image: "assets/catalog/cod_042.webp" },
-    { id: 43, code: "043", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Serenidad Abundante", description: "Bouquet con 30 rosas y 3 lirios que transmiten paz.", price: 262500, image: "assets/catalog/cod_043.webp" },
-    { id: 44, code: "044", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Explosión Floral", description: "Ramo de 24 rosas y 10 lirios en presentación premium.", price: 275000, image: "assets/catalog/cod_044.webp" },
-    { id: 45, code: "045", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Jardín Romántico", description: "Arreglo con 30 rosas y 5 lirios frescos seleccionados.", price: 287500, image: "assets/catalog/cod_045.webp" },
-    { id: 46, code: "046", category: "Lirios y Rosas", tags: ["lirios", "rosas"], name: "Jardín Encantado", description: "Bouquet de 30 rosas, 5 lirios y mariposa decorativa.", price: 293750, image: "assets/catalog/cod_046.webp" },
-
-// Rosas y Girasoles
-    { id: 48, code: "048", category: "Rosas y girasoles", tags: ["girasoles", "rosas"], name: "Sol y Pasión", description: "Ramo con 24 rosas y 2 girasoles radiantes. Intensidad y alegría.", price: 218750, image: "assets/catalog/cod_048.webp" },
-    { id: 49, code: "049", category: "Rosas y girasoles", tags: ["girasoles", "rosas"], name: "Brillo Múltiple", description: "Arreglo de 24 rosas y 5 girasoles. Amor iluminado por felicidad.", price: 237500, image: "assets/catalog/cod_049.webp" },
-    { id: 50, code: "050", category: "Rosas y girasoles", tags: ["girasoles", "rosas"], name: "Estrella Central", description: "Bouquet con 48 rosas y 1 girasol protagonista.", price: 268750, image: "assets/catalog/cod_050.webp" },
-    { id: 51, code: "051", category: "Rosas y girasoles", tags: ["girasoles", "rosas"], name: "Sol Imperial", description: "Ramo de 72 rosas y 1 girasol central. Intensidad y luz.", price: 375000, image: "assets/catalog/cod_051.webp" },
-    { id: 52, code: "052", category: "Rosas y girasoles", tags: ["girasoles", "rosas"], name: "Centenario Solar", description: "Arreglo con 100 rosas y 1 girasol. Amor grande y alegría eterna.", price: 487500, image: "assets/catalog/cod_052.webp" },
-    { id: 53, code: "053", category: "Rosas y girasoles", tags: ["girasoles", "rosas"], name: "Constelación Dorada", description: "Bouquet de 100 rosas y 4 girasoles. Amor sin límites y luz.", price: 500000, image: "assets/catalog/cod_053.webp" },
-
-    // Girasoles
-    { id: 54, code: "054", category: "Girasoles", tags: ["girasoles"], name: "Trío de Luz", description: "Arreglo con 3 girasoles frescos y radiantes. Alegría natural.", price: 75000, image: "assets/catalog/cod_054.webp" },
-    { id: 55, code: "055", category: "Girasoles", tags: ["girasoles"], name: "Cuarteto Solar", description: "Bouquet de 4 girasoles que transmiten energía positiva.", price: 93750, image: "assets/catalog/cod_055.webp" },
-    { id: 56, code: "056", category: "Girasoles", tags: ["girasoles"], name: "Siete Soles", description: "Ramo con 7 girasoles en presentación elegante. Felicidad luminosa.", price: 137500, image: "assets/catalog/cod_056.webp" },
-    { id: 57, code: "057", category: "Girasoles", tags: ["girasoles"], name: "Círculo Luminoso", description: "Arreglo de 10 girasoles que irradian alegría desbordante.", price: 162500, image: "assets/catalog/cod_057.webp" },
-    { id: 58, code: "058", category: "Girasoles", tags: ["girasoles"], name: "Docena Radiante", description: "Bouquet con 12 girasoles en presentación premium.", price: 181250, image: "assets/catalog/cod_058.webp" },
-    { id: 59, code: "059", category: "Girasoles", tags: ["girasoles"], name: "Veinte Rayos", description: "Ramo de 20 girasoles que roban miradas.", price: 287500, image: "assets/catalog/cod_059.webp" },
-    { id: 60, code: "060", category: "Girasoles", tags: ["girasoles", "rosas"], name: "Fusión Solar", description: "Arreglo con 5 girasoles y 15 rosas frescas. Alegría y romance.", price: 212500, image: "assets/catalog/cod_060.webp" },
-    { id: 61, code: "061", category: "Girasoles", tags: ["girasoles", "rosas"], name: "Mini Explosión", description: "Bouquet de 15 girasoles mini y 5 rosas (temporada). Ternura luminosa.", price: 250000, image: "assets/catalog/cod_061.webp" },
-    { id: 62, code: "062", category: "Girasoles", tags: ["girasoles", "rosas"], name: "Mensaje Solar", description: "Ramo con 12 girasoles, 8 rosas y listón personalizado.", price: 262500, image: "assets/catalog/cod_062.webp" },
-
-    // Solitarios
-    { id: 63, code: "063", category: "Solitarios", tags: ["rosas"], name: "Único Sentimiento", description: "Una rosa solitaria. Gesto simple pero cargado de significado.", price: 18750, image: "assets/catalog/cod_063.webp" },
-    { id: 64, code: "064", category: "Solitarios", tags: ["rosas"], name: "Dulce Gesto", description: "Una rosa con dulce selecto. Romance y sabor en un detalle.", price: 75000, image: "assets/catalog/cod_064.webp" },
-    { id: 66, code: "066", category: "Solitarios", tags: ["girasoles"], name: "Sol y Dulzura", description: "Un girasol radiante con 2 dulces gourmet. Alegría y sabor.", price: 87500, image: "assets/catalog/cod_066.webp" },
-    { id: 67, code: "067", category: "Solitarios", tags: ["girasoles"], name: "Dúo Luminoso", description: "Dos girasoles con 2 dulces selectos. Luz y dulzura.", price: 100000, image: "assets/catalog/cod_067.webp" },
-    { id: 68, code: "068", category: "Solitarios", tags: ["girasoles"], name: "Doble Alegría", description: "Par de girasoles con 2 dulces. Luz y buenos deseos.", price: 100000, image: "assets/catalog/cod_068.webp" },
-
-    // Mezcla de Flores
-    { id: 69, code: "069", category: "Mezcla de Flores", tags: ["arreglos"], name: "Jardín Primaveral", description: "Arreglo con hortensias, rosas y margaritas. Frescura natural.", price: 150000, image: "assets/catalog/cod_069.webp" },
-    { id: 70, code: "070", category: "Mezcla de Flores", tags: ["girasoles", "arreglos"], name: "Contraste Natural", description: "Bouquet de girasoles, cartuchos y follaje selecto.", price: 143750, image: "assets/catalog/cod_070.webp" },
-    { id: 71, code: "071", category: "Mezcla de Flores", tags: ["arreglos"], name: "Frescura Mixta", description: "Ramo con hortensias, rosas y margaritas en armonía.", price: 162500, image: "assets/catalog/cod_071.webp" },
-    { id: 72, code: "072", category: "Mezcla de Flores", tags: ["girasoles", "arreglos"], name: "Alegría Variada", description: "Arreglo de margaritas y girasoles radiantes. Felicidad pura.", price: 181250, image: "assets/catalog/cod_072.webp" },
-    { id: 73, code: "073", category: "Mezcla de Flores", tags: ["arreglos"], name: "Estrellas del Campo", description: "Bouquet de claveles y estrellas de Belén.", price: 175000, image: "assets/catalog/cod_073.webp" },
-    { id: 75, code: "075", category: "Mezcla de Flores", tags: ["rosas", "arreglos"], name: "Fusión Suave", description: "Ramo con rosas y astromelias delicadas. Romance y sutileza.", price: 137500, image: "assets/catalog/cod_075.webp" },
-    { id: 75.1, code: "075_a", category: "Mezcla de Flores", tags: ["arreglos"], name: "Ternura Rosada", description: "Arreglo de margaritas rosadas frescas. Amor tierno y puro.", price: 137500, image: "assets/catalog/cod_075_a.webp" },
-    { id: 76, code: "076", category: "Mezcla de Flores", tags: ["girasoles", "arreglos"], name: "Campo de Luz", description: "Bouquet de margaritas y girasol. Alegría natural y espontánea.", price: 150000, image: "assets/catalog/cod_076.webp" },
-    { id: 76.1, code: "076_a", category: "Mezcla de Flores", tags: ["arreglos"], name: "Cielo Florido", description: "Ramo de margaritas azules únicas. Amor sereno como el cielo.", price: 137500, image: "assets/catalog/cod_076_a.webp" },
-    { id: 77, code: "077", category: "Mezcla de Flores", tags: ["girasoles", "rosas", "arreglos"], name: "Trío Vibrante", description: "Arreglo con rosas, gerberas y girasoles. Pasión, alegría y luz.", price: 187500, image: "assets/catalog/cod_077.webp" },
-
-    // Lirios
-    { id: 78, code: "078", category: "Lirios", tags: ["lirios"], name: "Siete Elegantes", description: "Bouquet con 7 lirios frescos aromáticos. Pureza y admiración.", price: 168750, image: "assets/catalog/cod_078.webp" },
-    { id: 79, code: "079", category: "Lirios", tags: ["lirios"], name: "Pureza Abundante", description: "Ramo de 10 lirios en presentación premium. Elegancia natural.", price: 212500, image: "assets/catalog/cod_079.webp" },
-    { id: 80, code: "080", category: "Lirios", tags: ["lirios"], name: "Diez Majestuosos", description: "Arreglo con 10 lirios seleccionados. Máxima distinción floral.", price: 225000, image: "assets/catalog/cod_080.webp" },
-
-    // Bouquets en cascada
-    { id: 81, code: "081", category: "Bouquets en cascada", tags: ["rosas", "arreglos"], name: "Cascada Romántica", description: "Bouquet en cascada con 12 rosas. Diseño único que fluye con gracia.", price: 150000, image: "assets/catalog/cod_081.webp" },
-    { id: 82, code: "082", category: "Bouquets en cascada", tags: ["rosas", "arreglos"], name: "Fluir del Amor", description: "Arreglo en cascada de 24 rosas. Amor que fluye libre y eterno.", price: 212500, image: "assets/catalog/cod_082.webp" },
-
-    // Base
-    { id: 84, code: "084", category: "Base", tags: ["arreglos", "rosas"], name: "Base Clásica", description: "Arreglo de rosas en base elegante. Estilo atemporal.", price: 175000, image: "assets/catalog/cod_084.webp" },
-    { id: 85, code: "085", category: "Base", tags: ["arreglos", "rosas"], name: "Elegancia en Base", description: "Diseño sofisticado de rosas en base decorativa premium.", price: 225000, image: "assets/catalog/cod_085.webp" },
-    { id: 86, code: "086", category: "Base", tags: ["arreglos", "rosas"], name: "Dulce Sofisticación", description: "Arreglo con rosas y chocolates JP Chanet selectos.", price: 275000, image: "assets/catalog/cod_086.webp" },
-    { id: 87, code: "087", category: "Base", tags: ["arreglos", "rosas"], name: "Oro en Base", description: "Diseño de rosas amarillas en base elegante. Amistad y gratitud.", price: 175000, image: "assets/catalog/cod_087.webp" },
-    { id: 88, code: "088", category: "Base", tags: ["arreglos", "rosas"], name: "Guardián Dorado", description: "Arreglo de rosas amarillas con vela decorativa de oso.", price: 212500, image: "assets/catalog/cod_088.webp" },
-    { id: 89, code: "089", category: "Base", tags: ["arreglos", "rosas"], name: "Dulzura Dorada", description: "Diseño con rosas amarillas y chocolates selectos.", price: 225000, image: "assets/catalog/cod_089.webp" },
-    { id: 90, code: "090", category: "Base", tags: ["arreglos"], name: "Esplendor Floral", description: "Arreglo abundante en base premium con flores selectas.", price: 362500, image: "assets/catalog/cod_090.webp" },
-    { id: 91, code: "091", category: "Base", tags: ["arreglos"], name: "Grandeza Natural", description: "Diseño majestuoso en base de alto impacto.", price: 425000, image: "assets/catalog/cod_091.webp" },
-    { id: 92, code: "092", category: "Base", tags: ["arreglos"], name: "Magnificencia Total", description: "Arreglo espectacular en base elegante con flores premium.", price: 475000, image: "assets/catalog/cod_092.webp" },
-    { id: 93, code: "093", category: "Base", tags: ["arreglos"], name: "Jardín Premium", description: "Diseño sofisticado en base con variedad de flores selectas.", price: 337500, image: "assets/catalog/cod_093.webp" },
-    { id: 94, code: "094", category: "Base", tags: ["arreglos"], name: "Abundancia Suprema", description: "Arreglo generoso en base decorativa de lujo.", price: 412500, image: "assets/catalog/cod_094.webp" },
-    { id: 95, code: "095", category: "Base", tags: ["arreglos"], name: "Opulencia Floral", description: "Diseño lujoso en base premium con flores excepcionales.", price: 437500, image: "assets/catalog/cod_095.webp" },
-    { id: 95.1, code: "095_a", category: "Base", tags: ["arreglos"], name: "Lujo Absoluto", description: "Arreglo exclusivo en base de alta gama con flores únicas.", price: 487500, image: "assets/catalog/cod_095_a.webp" },
-    { id: 96, code: "096", category: "Base", tags: ["arreglos"], name: "Majestuosidad Pura", description: "Diseño imponente en base espectacular con flores premium.", price: 612500, image: "assets/catalog/cod_096.webp" },
-    { id: 97, code: "097", category: "Base", tags: ["arreglos"], name: "Imperio Floral", description: "Arreglo monumental en base lujosa. Impactar y conquistar.", price: 625000, image: "assets/catalog/cod_097.webp" },
-    { id: 98, code: "098", category: "Base", tags: ["arreglos"], name: "Elegancia Superior", description: "Diseño sofisticado en base con flores de calidad.", price: 312500, image: "assets/catalog/cod_098.webp" },
-    { id: 99, code: "099", category: "Base", tags: ["arreglos"], name: "Sofisticación Media", description: "Arreglo equilibrado en base con flores frescas selectas.", price: 275000, image: "assets/catalog/cod_099.webp" },
-    { id: 100, code: "100", category: "Base", tags: ["arreglos"], name: "Distinción Equilibrada", description: "Diseño armonioso en base con flores seleccionadas.", price: 275000, image: "assets/catalog/cod_100.webp" },
-    { id: 110, code: "110", category: "Base", tags: ["arreglos"], name: "Base Encantadora", description: "Arreglo delicado en base decorativa con flores frescas.", price: 193750, image: "assets/catalog/cod_110.webp" },
-    { id: 111, code: "111", category: "Base", tags: ["arreglos"], name: "Base Elegante", description: "Diseño sofisticado en base con flores de calidad premium.", price: 212500, image: "assets/catalog/cod_111.webp" },
-    { id: 112, code: "112", category: "Base", tags: ["arreglos"], name: "Base Distinguida", description: "Arreglo refinado en base decorativa con flores elegidas.", price: 225000, image: "assets/catalog/cod_112.webp" },
-    { id: 113, code: "113", category: "Base", tags: ["arreglos"], name: "Base Armoniosa", description: "Diseño equilibrado en base con combinación perfecta.", price: 225000, image: "assets/catalog/cod_113.webp" },
-    { id: 114, code: "114", category: "Base", tags: ["arreglos"], name: "Base Premium", description: "Arreglo superior en base elegante con flores selectas.", price: 250000, image: "assets/catalog/cod_114.webp" },
-    { id: 115, code: "115", category: "Base", tags: ["arreglos"], name: "Base Sofisticada", description: "Diseño refinado en base decorativa con flores premium.", price: 250000, image: "assets/catalog/cod_115.webp" },
-    { id: 116, code: "116", category: "Base", tags: ["arreglos"], name: "Base Superior", description: "Arreglo excepcional en base de lujo con flores selectas.", price: 275000, image: "assets/catalog/cod_116.webp" },
-    { id: 117, code: "117", category: "Base", tags: ["arreglos"], name: "Base Abundante", description: "Diseño generoso en base con flores frescas abundantes.", price: 287500, image: "assets/catalog/cod_117.webp" },
-    { id: 118, code: "118", category: "Base", tags: ["arreglos"], name: "Base Espectacular", description: "Arreglo imponente en base con flores premium excepcionales.", price: 300000, image: "assets/catalog/cod_118.webp" },
-    { id: 119, code: "119", category: "Base", tags: ["arreglos"], name: "Base Magnífica", description: "Diseño majestuoso en base de lujo con flores únicas.", price: 300000, image: "assets/catalog/cod_119.webp" },
-    { id: 120, code: "120", category: "Base", tags: ["arreglos"], name: "Base Imponente", description: "Arreglo poderoso en base elegante con flores premium.", price: 287500, image: "assets/catalog/cod_120.webp" },
-    { id: 121, code: "121", category: "Base", tags: ["arreglos"], name: "Base Majestuosa", description: "Diseño espectacular en base lujosa con flores excepcionales.", price: 375000, image: "assets/catalog/cod_121.webp" },
-    { id: 122, code: "122", category: "Base", tags: ["arreglos"], name: "Base Imperial", description: "Arreglo monumental en base premium con flores únicas.", price: 562500, image: "assets/catalog/cod_122.webp" },
-
-    // Base de Corazones
-    { id: 101, code: "101", category: "Base de Corazones", tags: ["arreglos", "rosas", "cumpleaños"], name: "Corazón Delicado", description: "Arreglo romántico en base corazón con flores frescas.", price: 250000, image: "assets/catalog/cod_101.webp" },
-    { id: 102, code: "102", category: "Base de Corazones", tags: ["arreglos", "rosas", "cumpleaños"], name: "Amor en Base", description: "Diseño en corazón decorativo con flores selectas.", price: 275000, image: "assets/catalog/cod_102.webp" },
-    { id: 103, code: "103", category: "Base de Corazones", tags: ["arreglos", "rosas"], name: "Corazón Clásico", description: "Arreglo tradicional en base corazón con flores elegantes.", price: 250000, image: "assets/catalog/cod_103.webp" },
-    { id: 104, code: "104", category: "Base de Corazones", tags: ["arreglos", "rosas"], name: "Corazón Grande", description: "Diseño abundante en base corazón con flores premium.", price: 375000, image: "assets/catalog/cod_104.webp" },
-    { id: 105, code: "105", category: "Base de Corazones", tags: ["arreglos", "rosas"], name: "Corazón Supremo", description: "Arreglo espectacular en corazón lujoso con flores excepcionales.", price: 393750, image: "assets/catalog/cod_105.webp" },
-    { id: 106, code: "106", category: "Base de Corazones", tags: ["arreglos", "rosas"], name: "Corazón Majestuoso", description: "Diseño imponente en base corazón con variedad premium.", price: 400000, image: "assets/catalog/cod_106.webp" },
-    { id: 107, code: "107", category: "Base de Corazones", tags: ["arreglos", "rosas"], name: "Corazón Imperial", description: "Arreglo monumental en corazón elegante con flores únicas.", price: 487500, image: "assets/catalog/cod_107.webp" },
-    { id: 108, code: "108", category: "Base de Corazones", tags: ["arreglos", "rosas"], name: "Corazón Eterno", description: "Diseño inolvidable en base corazón con flores premium.", price: 500000, image: "assets/catalog/cod_108.webp" },
-
-    // Anchetas
-    { id: 123, code: "123", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Inicial", description: "Canasta regalo con flores y detalles especiales.", price: 200000, image: "assets/catalog/cod_123.webp" },
-    { id: 124, code: "124", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Encantadora", description: "Cesta decorativa con flores frescas y obsequios selectos.", price: 237500, image: "assets/catalog/cod_124.webp" },
-    { id: 125, code: "125", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Especial", description: "Canasta premium con flores y detalles seleccionados.", price: 237500, image: "assets/catalog/cod_125.webp" },
-    { id: 126, code: "126", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Premium", description: "Cesta elegante con flores y regalos de calidad superior.", price: 275000, image: "assets/catalog/cod_126.webp" },
-    { id: 127, code: "127", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Elegante", description: "Canasta sofisticada con flores premium y obsequios.", price: 275000, image: "assets/catalog/cod_127.webp" },
-    { id: 128, code: "128", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Sofisticada", description: "Cesta de lujo con flores excepcionales y detalles exclusivos.", price: 287500, image: "assets/catalog/cod_128.webp" },
-    { id: 129, code: "129", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Superior", description: "Canasta de alta gama con flores selectas y regalos premium.", price: 300000, image: "assets/catalog/cod_129.webp" },
-    { id: 130, code: "130", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Distinguida", description: "Cesta elegante con flores y obsequios de distinción.", price: 300000, image: "assets/catalog/cod_130.webp" },
-    { id: 131, code: "131", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Exclusiva", description: "Canasta única con flores excepcionales y detalles exclusivos.", price: 300000, image: "assets/catalog/cod_131.webp" },
-    { id: 132, code: "132", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Majestuosa", description: "Cesta espectacular con flores premium y regalos de lujo.", price: 400000, image: "assets/catalog/cod_132.webp" },
-    { id: 133, code: "133", category: "ANCHETAS", tags: ["arreglos", "cumpleaños"], name: "Ancheta Imperial", description: "Canasta monumental con flores únicas y obsequios excepcionales.", price: 425000, image: "assets/catalog/cod_133.webp" }
+    { id: 1, code: "001", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "cumpleaños", "arreglos"], name: "Sorpresa Festiva", description: "Arreglo alegre de rosas fucsia y girasoles acompañado de dulces, fruta y mariposa decorativa. Perfecto para cumpleaños llenos de color y sabor.", price: 175000, image: "assets/catalog/foto1.webp" },
+    { id: 2, code: "002", category: "Anchetas Snacks", tags: ["rosas", "girasoles", "cumpleaños", "arreglos"], name: "Cumpleaños Dorado", description: "Ancheta de snacks variados con globos de cumpleaños y mini bouquet de rosas con girasol. Combina dulzura, alegría y celebración en un solo regalo.", price: 162500, image: "assets/catalog/foto2.webp" },
+    { id: 3, code: "003", category: "Rosas Rojas", tags: ["rosas", "rosas rojas", "arreglos"], name: "Pasión Envuelta", description: "Bouquet elegante de rosas rojas con papel negro y dorado decorado con mariposa. Símbolo clásico de amor presentado con distinción premium.", price: 187500, image: "assets/catalog/foto3.webp" },
+    { id: 4, code: "004", category: "Bebés y Recién Nacidos", tags: ["rosas", "arreglos"], name: "Bienvenida Tierna", description: "Bouquet de rosas en tonos pastel con osito de peluche para celebrar la llegada del bebé. Detalle delicado y lleno de ternura para mamá y recién nacido.", price: 218750, image: "assets/catalog/foto4.webp" },
+    { id: 5, code: "005", category: "Rosas Rojas", tags: ["rosas", "rosas rojas", "arreglos"], name: "Romance Eterno", description: "Bouquet abundante de rosas rojas con mariposas doradas y aster blanca. Regalo perfecto para aniversarios y declaraciones románticas inolvidables.", price: 256250, image: "assets/catalog/foto5.webp" },
+    { id: 6, code: "006", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Cascada Rosa", description: "Arreglo en cascada con rosas fucsia, girasoles, manzanas verdes y rojas, globo y chocolates. Una explosión de color y sabor para ocasiones especiales.", price: 200000, image: "assets/catalog/foto6.webp" },
+    { id: 7, code: "007", category: "Rosas y Girasoles", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Fusión Vibrante", description: "Bouquet espectacular con rosas rojas, rosadas y girasol central rodeado de chocolates. Diseño que combina pasión y alegría en perfecta armonía.", price: 212500, image: "assets/catalog/foto7.webp" },
+    { id: 8, code: "008", category: "Rosas Premium", tags: ["rosas", "arreglos"], name: "Corona de Reina", description: "Bouquet sofisticado de rosas blancas y rosadas con corona plateada y mariposas. Perfecto para princesas que merecen sentirse como reinas.", price: 287500, image: "assets/catalog/foto8.webp" },
+    { id: 9, code: "009", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Sol y Pasión Frutal", description: "Arreglo grande de girasoles, rosas rojas con manzanas, chocolates y globo de Feliz Día. Ancheta perfecta para regalar alegría y dulzura.", price: 193750, image: "assets/catalog/foto9.webp" },
+    { id: 10, code: "010", category: "Combinación de Rosas", tags: ["rosas", "arreglos"], name: "Jardín Encantado", description: "Bouquet romántico de rosas fucsia, blancas y crema con aster lila y mariposa dorada. Diseño tierno ideal para sorprender con elegancia natural.", price: 162500, image: "assets/catalog/foto10.webp" },
+    { id: 11, code: "011", category: "Rosas y Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Sol Apasionado", description: "Bouquet circular de girasoles centrales rodeados de rosas rojas y mariposa decorativa. Combina la calidez del sol con la intensidad del amor.", price: 206250, image: "assets/catalog/foto11.webp" },
+    { id: 12, code: "012", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Festejo Completo", description: "Arreglo majestuoso de rosas rojas y girasoles con peluche, globo de corazón y chocolates. Para celebraciones que merecen ser inolvidables.", price: 262500, image: "assets/catalog/foto12.webp" },
+    { id: 13, code: "013", category: "Rosas Rojas", tags: ["rosas", "rosas rojas", "cumpleaños", "arreglos"], name: "Clásico Cumpleaños", description: "Bouquet tradicional de rosas rojas con gypsophila y dedicatoria personalizada. La opción más elegante para celebrar fechas especiales.", price: 112500, image: "assets/catalog/foto13.webp" },
+    { id: 14, code: "014", category: "Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Rayos de Sol", description: "Bouquet de girasoles frescos con toque de rosas rojas y mariposa decorativa. Transmite alegría, energía positiva y luz en cada pétalo.", price: 106250, image: "assets/catalog/foto14.webp" },
+    { id: 15, code: "015", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Doble Sorpresa", description: "Ancheta de oso, dulces y chocolates acompañada de bouquet de flores variadas con girasol. Doble regalo para conquistar el corazón.", price: 206250, image: "assets/catalog/foto15.webp" },
+    { id: 16, code: "016", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "arreglos"], name: "Amor Imperial", description: "Arreglo imponente de rosas rojas, girasoles, ave del paraíso, osito y globo Te Amo. Diseño exclusivo para declaraciones de amor profundas.", price: 262500, image: "assets/catalog/foto16.webp" },
+    { id: 17, code: "017", category: "Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Docena Solar", description: "Bouquet abundante de girasoles frescos con helechos y mariposa decorativa. Perfecto para iluminar el día de quien lo recibe.", price: 181250, image: "assets/catalog/foto17.webp" },
+    { id: 18, code: "018", category: "Rosas con Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Tesoro Dorado", description: "Bouquet de rosas rojas con caja de Ferrero Rocher al centro y mariposa decorativa. Combina romance y sabor en presentación elegante negra.", price: 237500, image: "assets/catalog/foto18.webp" },
+    { id: 19, code: "019", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "arreglos"], name: "Trópico Vibrante", description: "Arreglo grande con girasoles, rosas rojas y aves del paraíso acompañado de globo Te Quiero. Para celebraciones que necesitan presencia imponente.", price: 231250, image: "assets/catalog/foto19.webp" },
+    { id: 20, code: "020", category: "Rosas y Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Mariposas Doradas", description: "Bouquet circular de girasoles y rosas rosadas con múltiples mariposas decorativas. Diseño romántico y delicado para ocasiones especiales.", price: 231250, image: "assets/catalog/foto20.webp" },
+    { id: 21, code: "021", category: "Arreglos Fúnebres", tags: ["rosas", "arreglos"], name: "Paz Blanca", description: "Arreglo majestuoso de rosas blancas, lirios y margaritas en base de madera. Expresa condolencias con elegancia y respeto absoluto.", price: 312500, image: "assets/catalog/foto21.webp" },
+    { id: 22, code: "022", category: "Grados", tags: ["rosas", "arreglos"], name: "Logro Coronado", description: "Bouquet de rosas rojas con birrete negro y mariposas doradas para celebrar grados. El regalo perfecto para quienes alcanzan sus metas académicas.", price: 225000, image: "assets/catalog/foto22.webp" },
+    { id: 23, code: "023", category: "Grados", tags: ["rosas", "arreglos"], name: "Oso Graduado", description: "Bouquet en tonos rojo y crema con osito graduado y banda Lo lograste. Detalle especial para quienes culminan una etapa académica importante.", price: 231250, image: "assets/catalog/foto23.webp" },
+    { id: 24, code: "024", category: "Grados", tags: ["rosas", "arreglos"], name: "Grado Lila", description: "Bouquet pastel de rosas rosadas y crema con birrete morado y aster lila. Celebra los logros con elegancia y suavidad inigualable.", price: 168750, image: "assets/catalog/foto24.webp" },
+    { id: 25, code: "025", category: "Desayunos Sorpresa", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Desayuno Romántico", description: "Caja desayuno con arreglo de rosas rojas, girasoles, frutas, yogurt y chocolates más globo de corazón. Ideal para sorprender desde temprano.", price: 212500, image: "assets/catalog/foto25.webp" },
+    { id: 26, code: "026", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "arreglos"], name: "Pirámide Tropical", description: "Arreglo monumental de girasoles, rosas fucsia, ave del paraíso, manzanas y uvas. Diseño impactante para celebraciones de gran escala.", price: 312500, image: "assets/catalog/foto26.webp" },
+    { id: 27, code: "027", category: "Rosas Premium", tags: ["rosas", "arreglos"], name: "Panda Enamorado", description: "Bouquet abundante de rosas rojas con panda de peluche Loves y globo rojo. Detalle adorable y romántico para conquistar corazones.", price: 312500, image: "assets/catalog/foto27.webp" },
+    { id: 28, code: "028", category: "Rosas Rosadas", tags: ["rosas", "arreglos"], name: "Ternura Rosa", description: "Bouquet delicado de rosas rosadas con gypsophila en empaque crema. Transmite amor tierno y sentimientos suaves con elegancia natural.", price: 150000, image: "assets/catalog/foto28.webp" },
+    { id: 29, code: "029", category: "Arreglos Especiales", tags: ["rosas", "arreglos"], name: "Blanco Festivo", description: "Arreglo grande de rosas blancas y crema con panda, globo y ave del paraíso. Combinación elegante para celebraciones inolvidables.", price: 287500, image: "assets/catalog/foto29.webp" },
+    { id: 30, code: "030", category: "Arreglos Fúnebres", tags: ["rosas", "arreglos"], name: "Despedida Serena", description: "Arreglo fúnebre de rosas blancas, hortensias, rosas pastel y gladiolos. Expresa respeto y serenidad en momentos de dolor.", price: 325000, image: "assets/catalog/foto30.webp" },
+    { id: 31, code: "031", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "arreglos"], name: "Triángulo Floral", description: "Arreglo triangular de rosas blancas, rosadas y girasoles con lazo blanco. Diseño armonioso ideal para ocasiones formales o expresar admiración.", price: 325000, image: "assets/catalog/foto31.webp" },
+    { id: 32, code: "032", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos"], name: "Cascada de Amor", description: "Arreglo en cascada de rosas fucsia, girasoles y rosas blancas con globo Te Amo. Romántico y abundante para sorprender en grande.", price: 206250, image: "assets/catalog/foto32.webp" },
+    { id: 33, code: "033", category: "Bouquets de Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Festival Chocolatero", description: "Bouquet exclusivo de chocolates surtidos (KitKat, Hersheys, Twix, Ferrero) con toque de rosas. Regalo irresistible para amantes del chocolate.", price: 337500, image: "assets/catalog/foto33.webp" },
+    { id: 34, code: "034", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "cumpleaños", "arreglos", "chocolates"], name: "Domo de Pasión", description: "Arreglo abundante de rosas rojas y girasoles con chocolates Hersheys y globo de cumpleaños. Para celebraciones espectaculares de gran impacto.", price: 306250, image: "assets/catalog/foto34.webp" },
+    { id: 35, code: "035", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Día de Mamá", description: "Arreglo con girasoles, rosas rojas, uvas, manzanas y chocolates más globo Te Amo Mamá. Regalo perfecto para el día más importante.", price: 312500, image: "assets/catalog/foto35.webp" },
+    { id: 36, code: "036", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Pirámide Festiva", description: "Arreglo piramidal de rosas rojas, girasoles, ave del paraíso, chocolates y manzana. Diseño elegante para celebrar momentos importantes.", price: 206250, image: "assets/catalog/foto36.webp" },
+    { id: 37, code: "037", category: "Caja de Corazón", tags: ["rosas", "arreglos", "chocolates"], name: "Corazón Ferrero", description: "Caja en forma de corazón con rosas rojas y bombones Ferrero Rocher. Detalle exquisito que une romance y sabor en presentación premium.", price: 325000, image: "assets/catalog/foto37.webp" },
+    { id: 38, code: "038", category: "Arreglos Fúnebres", tags: ["rosas", "arreglos"], name: "Sinfonía Naranja", description: "Arreglo fúnebre alto de rosas naranjas, crisantemos blancos y heliconia. Diseño elegante para ofrendas y condolencias respetuosas.", price: 231250, image: "assets/catalog/foto38.webp" },
+    { id: 39, code: "039", category: "Caja de Corazón", tags: ["rosas", "arreglos", "chocolates"], name: "Corazón Kinder", description: "Caja corazón con rosas rojas en forma de corazón y chocolates Kinder Bueno. Detalle dulce y romántico para enamorar todos los sentidos.", price: 300000, image: "assets/catalog/foto39.webp" },
+    { id: 40, code: "040", category: "Rosas Rojas", tags: ["rosas", "rosas rojas", "arreglos"], name: "Ramo Cilíndrico", description: "Bouquet de rosas rojas alineadas en filas con empaque blanco y moño rosa-rojo. Diseño clásico y ordenado que nunca falla.", price: 150000, image: "assets/catalog/foto40.webp" },
+    { id: 41, code: "041", category: "Rosas con Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Mármol Rocher", description: "Bouquet de rosas rojas con caja de Ferrero Rocher y papel mármol negro dorado. Elegancia sofisticada para regalos premium.", price: 200000, image: "assets/catalog/foto41.webp" },
+    { id: 42, code: "042", category: "Desayunos Sorpresa", tags: ["rosas", "cumpleaños", "arreglos"], name: "Mesa Romántica", description: "Bandeja con arreglo de rosas rojas, vino, postres y globos Te Amo y Feliz Cumple. Sorprende con una experiencia completa de desayuno.", price: 337500, image: "assets/catalog/foto42.webp" },
+    { id: 43, code: "043", category: "Rosas con Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Rosas Ferrero Corazón", description: "Bouquet de rosas rojas con caja Ferrero Rocher en forma de corazón. Combina romance clásico con dulzura premium en cada detalle.", price: 187500, image: "assets/catalog/foto43.webp" },
+    { id: 44, code: "044", category: "Rosas Rosadas", tags: ["rosas", "arreglos"], name: "Sinfonía Rosa", description: "Bouquet de rosas rosadas y claveles en empaque fucsia con moño violeta. Diseño femenino y delicado lleno de ternura.", price: 150000, image: "assets/catalog/foto44.webp" },
+    { id: 45, code: "045", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos"], name: "Oso Enamorado", description: "Arreglo de rosas rojas con osito Love, girasol superior y globo Te Amo. Detalle adorable que conquista en cualquier ocasión.", price: 175000, image: "assets/catalog/foto45.webp" },
+    { id: 46, code: "046", category: "Rosas Premium", tags: ["rosas", "arreglos"], name: "Corona de Perlas", description: "Bouquet exclusivo de rosas rojas con corona de perlas y mariposas doradas. Diseño regio para sorprender a quien merece lo mejor.", price: 287500, image: "assets/catalog/foto46.webp" },
+    { id: 47, code: "047", category: "Arreglos Fúnebres", tags: ["rosas", "girasoles", "arreglos"], name: "Cristo Blanco", description: "Arreglo fúnebre alto de rosas blancas con crucifijo, ave del paraíso y girasol. Expresión solemne de fe y respeto en momentos difíciles.", price: 262500, image: "assets/catalog/foto47.webp" },
+    { id: 48, code: "048", category: "Anchetas Combo", tags: ["rosas", "cumpleaños", "arreglos"], name: "Combo Cumpleañero", description: "Bouquet de rosas rojas más ancheta con globo Happy Birthday, panda, dulces y manzanas. Doble sorpresa para celebrar cumpleaños memorables.", price: 187500, image: "assets/catalog/foto48.webp" },
+    { id: 49, code: "049", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Champagne Floral", description: "Arreglo abundante de rosas rojas y girasoles con botella de champagne, chocolates y globo Feliz Día. Para brindis y celebraciones especiales.", price: 287500, image: "assets/catalog/foto49.webp" },
+    { id: 50, code: "050", category: "Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Sol Amarillo", description: "Bouquet de girasoles y rosas amarillas en empaque dorado y crema. Diseño radiante que transmite amistad y buenos deseos.", price: 150000, image: "assets/catalog/foto50.webp" },
+    { id: 51, code: "051", category: "Desayunos Sorpresa", tags: ["rosas", "arreglos"], name: "Desayuno Postre", description: "Bandeja con bouquet de rosas rojas, torta, malvaviscos, jugos y globos Te Amo. Desayuno romántico cargado de dulzura y detalle.", price: 200000, image: "assets/catalog/foto51.webp" },
+    { id: 52, code: "052", category: "Rosas Rojas", tags: ["rosas", "rosas rojas", "cumpleaños", "arreglos"], name: "Cumpleaños Clásico", description: "Bouquet vertical de rosas rojas en empaque negro con gypsophila y globo Feliz Cumpleaños. Diseño tradicional y siempre acertado.", price: 162500, image: "assets/catalog/foto52.webp" },
+    { id: 53, code: "053", category: "Rosas Blancas", tags: ["rosas", "arreglos"], name: "Pureza Rosada", description: "Bouquet delicado de rosas blancas con gypsophila y mariposa dorada en empaque rosa. Transmite pureza, paz y sentimientos sinceros.", price: 150000, image: "assets/catalog/foto53.webp" },
+    { id: 54, code: "054", category: "Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Mini Solar", description: "Bouquet compacto de girasoles frescos en empaque crema con mensaje cariñoso. Detalle económico y radiante para alegrar el día.", price: 93750, image: "assets/catalog/foto54.webp" },
+    { id: 55, code: "055", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "cumpleaños", "arreglos"], name: "Cumple Frutal", description: "Arreglo de rosas rojas y girasoles con frutas frescas, dulces y globo Happy Birthday. Ancheta completa para celebraciones festivas.", price: 193750, image: "assets/catalog/foto55.webp" },
+    { id: 56, code: "056", category: "Cajas de Rosas", tags: ["rosas", "arreglos"], name: "Caja Sombrero", description: "Caja sombrero negra con rosas rojas y gypsophila, dedicatoria personalizada y mariposa decorativa. Diseño premium y atemporal.", price: 175000, image: "assets/catalog/foto56.webp" },
+    { id: 57, code: "057", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos", "chocolates"], name: "Cascada Pastel", description: "Arreglo cascada de rosas pastel y crema con girasoles, osito, uvas y chocolates. Diseño abundante y romántico con muchos detalles.", price: 300000, image: "assets/catalog/foto57.webp" },
+    { id: 58, code: "058", category: "Arreglos Especiales", tags: ["rosas", "girasoles", "arreglos"], name: "Día Mamá Tropical", description: "Arreglo de rosas rojas, ave del paraíso, girasol y frutas con globo Feliz Día Mamá. Regalo especial para honrar a las madres.", price: 231250, image: "assets/catalog/foto58.webp" },
+    { id: 59, code: "059", category: "Rosas Rosadas", tags: ["rosas", "arreglos"], name: "Romance Pastel", description: "Bouquet de rosas rosadas y blancas con gypsophila en empaque rosa con borde dorado. Diseño romántico y elegante para enamorar.", price: 175000, image: "assets/catalog/foto59.webp" },
+    { id: 60, code: "060", category: "Rosas con Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Corazón Rocher", description: "Bouquet circular de rosas rojas con caja Ferrero Rocher en forma de corazón y mariposa. Combinación perfecta de amor y sabor.", price: 275000, image: "assets/catalog/foto60.webp" },
+    { id: 61, code: "061", category: "Rosas y Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Mixto Festivo", description: "Arreglo de rosas rojas y girasoles con globo Feliz Día y base azul. Diseño alegre para celebraciones llenas de color y energía.", price: 181250, image: "assets/catalog/foto61.webp" },
+    { id: 62, code: "062", category: "Anchetas Snacks", tags: ["cumpleaños", "arreglos"], name: "Cumple Saludable", description: "Ancheta con frutas, snacks, jugos, papas y globos de cumpleaños. Opción equilibrada para sorprender con sabor y nutrición.", price: 106250, image: "assets/catalog/foto62.webp" },
+    { id: 63, code: "063", category: "Anchetas Combo", tags: ["rosas", "cumpleaños", "arreglos"], name: "Doble Cumpleaños", description: "Ancheta de dulces con globos más bouquet de rosas rojas y rosadas. Combo doble lleno de color y dulzura para celebrar.", price: 175000, image: "assets/catalog/foto63.webp" },
+    { id: 64, code: "064", category: "Anchetas Snacks", tags: ["cumpleaños", "arreglos", "chocolates"], name: "Cerveza y Frutas", description: "Ancheta con cervezas Corona, frutas frescas, chocolates y globos de cumpleaños. Ideal para él en su día especial.", price: 175000, image: "assets/catalog/foto64.webp" },
+    { id: 65, code: "065", category: "Cajas de Rosas", tags: ["rosas", "arreglos", "chocolates"], name: "Caja Premium Ferrero", description: "Caja negra cilíndrica con rosas rojas, gypsophila y caja Ferrero Rocher dorada. Diseño sofisticado para ocasiones muy especiales.", price: 218750, image: "assets/catalog/foto65.webp" },
+    { id: 66, code: "066", category: "Anchetas con Flores", tags: ["rosas", "girasoles", "arreglos"], name: "Pirámide Frutal", description: "Arreglo piramidal de rosas rojas, girasoles, ave del paraíso, uvas y manzanas con moño amarillo. Diseño espectacular y abundante.", price: 231250, image: "assets/catalog/foto66.webp" },
 ];
 
 // --- VARIABLES GLOBALES ---
@@ -179,7 +84,8 @@ function formatCOP(price) {
     }).format(price);
 }
 
-// --- ORDENAR PRODUCTOS: primero los de la categoría de la landing ---
+// --- ORDENAR PRODUCTOS: primero los de la categoría de la landing, luego el resto.
+// Dentro de cada grupo se ordena por precio ASCENDENTE (menor a mayor).
 function getSortedProducts(priorityTag) {
     const priority = [];
     const rest = [];
@@ -190,7 +96,6 @@ function getSortedProducts(priorityTag) {
             rest.push(p);
         }
     });
-    // Dentro de cada grupo, ordenar por precio ascendente
     priority.sort((a, b) => a.price - b.price);
     rest.sort((a, b) => a.price - b.price);
     return [...priority, ...rest];
@@ -201,8 +106,8 @@ function getFilteredProducts(filter, priorityTag) {
     if (filter === 'priority' || filter === 'all') {
         return getSortedProducts(priorityTag);
     }
-    return products.filter(p => 
-        p.tags && p.tags.includes(filter) || p.category.toLowerCase().includes(filter)
+    return products.filter(p =>
+        (p.tags && p.tags.includes(filter)) || p.category.toLowerCase().includes(filter)
     ).sort((a, b) => a.price - b.price);
 }
 
@@ -280,19 +185,17 @@ function orderWA(code, name, price) {
 
     const formattedPrice = formatCOP(price);
     const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?`;
-    window.open(`https://wa.me/573243705155?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/573146218513?text=${encodeURIComponent(message)}`, '_blank');
 }
 
 // --- WHATSAPP GENÉRICO + CONVERSIÓN ---
 function contactWA(source, customMsg) {
-    // Google Ads conversion
     if (typeof gtag !== 'undefined') {
         gtag('event', 'conversion', {
             'send_to': 'AW-17951767999/DlVjCIeAg_gbEL_7iPBC'
         });
     }
 
-    // GA4 event
     if (typeof gtag !== 'undefined') {
         gtag('event', 'whatsapp_click', {
             'event_category': 'Contact',
@@ -302,7 +205,7 @@ function contactWA(source, customMsg) {
     }
 
     const msg = customMsg || `Hola, estoy interesado/a en sus arreglos florales. Me podrían dar más información?`;
-    window.open(`https://wa.me/573243705155?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/573146218513?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 // --- LIGHTBOX ---
