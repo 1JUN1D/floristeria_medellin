@@ -129,7 +129,6 @@ function createCard(product) {
     div.innerHTML = `
         <div class="product-img-wrap" onclick="openLB('../${product.image}', 'COD_${product.code} - ${product.name}', '${price}')">
             <img src="../${product.image}" alt="${product.name} - Flores a domicilio Medellín" loading="lazy">
-            <span class="product-code-badge">COD_${product.code}</span>
         </div>
         <div class="product-body">
             <h3>${product.name}</h3>
@@ -138,6 +137,7 @@ function createCard(product) {
                 <div class="price-block">
                     <span class="label">Precio</span>
                     <span class="price">${price}</span>
+                    <span class="product-code-badge">COD_${product.code}</span>
                 </div>
                 <a href="#" class="btn-order-landing" onclick="orderWA('COD_${product.code}', '${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.image}'); return false;">
                     🛒 Pedir

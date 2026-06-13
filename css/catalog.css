@@ -277,21 +277,19 @@
 
 .product-card:hover .product-image { transform: scale(1.07); }
 
+/* Código del producto · caption discreto bajo el precio */
 .product-badge {
-    position: absolute;
-    top: 0.9rem;
-    right: 0.9rem;
-    background: rgba(20, 16, 27, 0.78);
-    backdrop-filter: blur(4px);
-    color: #fff;
-    padding: 0.4rem 0.85rem;
+    display: inline-block;
+    margin-top: 0.6rem;
+    background: var(--catalog-cream);
+    color: var(--catalog-gold-dark);
+    padding: 0.3rem 0.9rem;
     border-radius: 999px;
-    font-size: 0.66rem;
+    font-size: 0.62rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.5);
-    z-index: 2;
+    border: 1px solid rgba(201, 168, 106, 0.45);
 }
 
 .zoom-icon {

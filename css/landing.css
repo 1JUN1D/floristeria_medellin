@@ -470,21 +470,19 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
 
 .product-card-landing:hover .product-img-wrap img { transform: scale(1.07); }
 
+/* Código del producto · caption discreto bajo el precio */
 .product-code-badge {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    background: rgba(20, 16, 27, 0.78);
-    backdrop-filter: blur(4px);
-    color: #fff;
-    padding: 0.32rem 0.7rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+    background: var(--cream);
+    color: var(--gold-dark);
+    padding: 0.28rem 0.85rem;
     border-radius: var(--radius-full);
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.5);
-    z-index: 2;
+    letter-spacing: 0.18em;
+    border: 1px solid rgba(201, 168, 106, 0.45);
 }
 
 .product-body {
