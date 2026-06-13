@@ -1,354 +1,478 @@
 /* ===================================
-   VARIABLES Y COLORES
+   LUXURY FLORAL · INDEX  (Floristeria Toda Ocasion)
+   Solo estilo · estructura/jerarquía intactas
    =================================== */
 :root {
-    /* Colores principales */
-    --color-primary: #F25C93; /* Rosa imperial */
-    --color-secondary: #F27EA9; /* Rosa suave */
-    --color-accent: #F2D7B6; /* Beige cálido */
-    --color-light-accent: #F2E6D8; /* Crema */
-    --color-dark: #0D0D0D; /* Negro profundo */
-    --color-light: #ffffff; /* Blanco */
-    --color-gray: #f5f5f5;
-    --color-text: #333333;
-    --color-text-light: #666666;
-    
-    /* Gradientes */
+    /* Color de marca (NO se cambia) */
+    --color-primary: #F25C93;        /* Rosa imperial */
+    --color-secondary: #F27EA9;      /* Rosa suave */
+    --color-primary-deep: #B5456E;   /* Variante ~25% más profunda: precios y hovers */
+    --color-accent: #F2D7B6;
+    --color-light-accent: #F2E6D8;
+
+    /* Tintas profundas */
+    --ink: #14101B;
+    --ink-2: #221B2E;
+
+    /* Neutros cálidos */
+    --warm-white: #FDFCFB;
+    --cream: #F8F5F0;
+    --brand-tint: #FBEFF4;           /* tinte pastel muy suave de la marca */
+
+    /* Oro champán */
+    --gold: #C9A86A;
+    --gold-dark: #A8853F;
+
+    /* Texto */
+    --color-text: #2B2433;
+    --color-text-light: #6B6375;
+    --hairline: rgba(22, 18, 28, 0.09);
+
+    /* WhatsApp */
+    --wa: #1EBE5D;
+    --wa-dark: #169549;
+
+    /* Compat (refinados) */
+    --color-dark: #14101B;
+    --color-light: #ffffff;
+    --color-gray: #F8F5F0;
+
     --gradient-primary: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
     --gradient-accent: linear-gradient(135deg, #F2D7B6 0%, #F2E6D8 100%);
-    --gradient-dark: linear-gradient(135deg, #0D0D0D 0%, #1a1a1a 100%);
-    
-    /* Sombras */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
-    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
-    
-    /* Tipografía */
+    --gradient-dark: linear-gradient(135deg, #14101B 0%, #221B2E 100%);
+
+    /* Sombras suaves y difusas */
+    --shadow-sm: 0 4px 18px rgba(20, 16, 27, 0.05);
+    --shadow-md: 0 12px 36px rgba(20, 16, 27, 0.07);
+    --shadow-lg: 0 22px 60px rgba(20, 16, 27, 0.10);
+    --shadow-xl: 0 32px 80px rgba(20, 16, 27, 0.14);
+
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Poppins', sans-serif;
-    
-    /* Transiciones */
+
     --transition-fast: 0.2s ease;
-    --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
+    --transition-normal: 0.35s ease;
+    --transition-slow: 0.6s ease;
+
+    /* Motivo arco de invernadero */
+    --arch: 999px 999px 20px 20px;
 }
 
 /* ===================================
    RESET Y BASE
    =================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
+html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
     font-family: var(--font-body);
+    font-weight: 300;
     color: var(--color-text);
-    line-height: 1.6;
-    background-color: var(--color-light);
+    line-height: 1.85;
+    background-color: var(--warm-white);
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
+img { max-width: 100%; height: auto; display: block; }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition-normal);
-}
+a { text-decoration: none; color: inherit; transition: color var(--transition-normal); }
+
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.01em; }
 
 /* ===================================
    CONTAINER
    =================================== */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
 
 /* ===================================
-   BREADCRUMB
+   BREADCRUMB → SELLO EDITORIAL
    =================================== */
 .breadcrumb {
-    font-size: 0.875rem;
-    color: var(--color-text-light);
-    margin-bottom: 1rem;
-    font-weight: 400;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.38em;
+    color: var(--gold-dark);
+    margin-bottom: 1.75rem;
+    font-weight: 500;
 }
 
-.breadcrumb a {
-    color: var(--color-primary);
-    transition: var(--transition-fast);
+.breadcrumb::before {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
 }
 
-.breadcrumb a:hover {
-    color: var(--color-secondary);
-}
+.breadcrumb a { color: var(--gold-dark); }
+.breadcrumb a:hover { color: var(--color-primary); }
 
 /* ===================================
-   HERO SECTION
+   HERO · ATELIER LUMINOSO
    =================================== */
 .hero-section {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 120px 0 80px;
-    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    padding: 150px 0 90px;
+    background: var(--warm-white);
     position: relative;
     overflow: hidden;
 }
 
+/* Resplandores radiales sutiles (marca + oro) */
 .hero-section::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(242, 92, 147, 0.08) 0%, transparent 70%);
+    top: -30%;
+    right: -15%;
+    width: 720px;
+    height: 720px;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(242, 92, 147, 0.10) 0%, transparent 60%),
+        radial-gradient(circle at 30% 70%, rgba(201, 168, 106, 0.10) 0%, transparent 60%);
     border-radius: 50%;
     z-index: 0;
+    pointer-events: none;
 }
 
 .hero-section::after {
     content: '';
     position: absolute;
-    bottom: -30%;
-    left: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(242, 215, 182, 0.06) 0%, transparent 70%);
+    bottom: -25%;
+    left: -12%;
+    width: 460px;
+    height: 460px;
+    background: radial-gradient(circle, rgba(242, 215, 182, 0.16) 0%, transparent 70%);
     border-radius: 50%;
     z-index: 0;
+    pointer-events: none;
 }
 
 .hero-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 70px;
     align-items: center;
     position: relative;
     z-index: 1;
 }
 
+/* Marca de agua gigante con el nombre de la floristería */
+.hero-left { position: relative; }
+
+.hero-left::before {
+    content: 'Floristería';
+    position: absolute;
+    top: -0.55em;
+    left: -0.06em;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(5rem, 13vw, 11rem);
+    line-height: 0.9;
+    color: rgba(242, 92, 147, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-left > * { position: relative; z-index: 1; }
+
 .hero-left h1 {
     font-family: var(--font-heading);
-    font-size: 4rem;
-    font-weight: 700;
-    color: var(--color-dark);
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: clamp(2.8rem, 5vw, 4.4rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
 }
 
 .hero-description {
-    font-size: 1.125rem;
+    font-size: 1.06rem;
     color: var(--color-text-light);
-    margin-bottom: 2.5rem;
-    line-height: 1.8;
+    margin-bottom: 2.6rem;
+    line-height: 1.95;
     font-weight: 300;
+    max-width: 33em;
 }
 
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
+.hero-buttons { display: flex; gap: 1.1rem; flex-wrap: wrap; }
 
 /* ===================================
-   BUTTONS
+   BOTONES PILL
    =================================== */
 .btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2rem;
+    gap: 0.6rem;
+    padding: 1.05rem 2.4rem;
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 500;
     border: none;
-    border-radius: 50px;
+    border-radius: 999px;
     cursor: pointer;
-    transition: all var(--transition-normal);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), background var(--transition-normal), color var(--transition-normal);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: var(--shadow-md);
+    letter-spacing: 0.18em;
+    overflow: hidden;
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
-    color: var(--color-light);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
+    color: #fff;
+    box-shadow: 0 14px 32px rgba(242, 92, 147, 0.28);
+}
+
+/* Brillo deslizante */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-18deg);
+    transition: transform 0.7s ease;
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 44px rgba(181, 69, 110, 0.34);
 }
 
+.btn-primary:hover::before { transform: translateX(260%) skewX(-18deg); }
+
 .btn-whatsapp {
-    background: #25D366;
-    color: var(--color-light);
+    background: var(--wa);
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(30, 190, 93, 0.26);
 }
 
 .btn-whatsapp:hover {
-    background: #128C7E;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    background: var(--wa-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(22, 149, 73, 0.32);
 }
 
+/* Secundario ghost con hairline */
 .btn-secondary {
-    background: var(--gradient-accent);
-    color: var(--color-dark);
-    padding: 0.875rem 1.75rem;
-    font-size: 0.95rem;
+    background: transparent;
+    color: var(--ink);
+    padding: 0.95rem 2rem;
+    border: 1px solid var(--hairline);
+    box-shadow: none;
 }
 
 .btn-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+    color: var(--gold-dark);
+    transform: translateY(-3px);
 }
 
-.btn-large {
-    padding: 1.25rem 3rem;
-    font-size: 1.125rem;
-}
+.btn-large { padding: 1.2rem 3rem; font-size: 0.82rem; }
 
 /* ===================================
-   VIDEO CONTAINER
+   HERO · GRAN ARCO DE INVERNADERO
    =================================== */
+.hero-right { position: relative; }
+
 .video-container {
     position: relative;
-    border-radius: 20px;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--arch);
     overflow: hidden;
-    box-shadow: var(--shadow-xl);
-    aspect-ratio: 1 / 1;
-    background: var(--color-dark);
+    background: var(--ink);
+    /* passe-partout blanco + anillo dorado fino */
+    box-shadow:
+        0 0 0 10px #fff,
+        0 0 0 11px rgba(201, 168, 106, 0.55),
+        var(--shadow-xl);
+    z-index: 1;
 }
 
-.hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Eco del arco desplazado */
+.hero-right::before {
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: 26px;
+    right: -26px;
+    bottom: -26px;
+    border: 1px solid rgba(201, 168, 106, 0.35);
+    border-radius: var(--arch);
+    z-index: 0;
 }
+
+/* Florón dorado en la cúspide */
+.hero-right::after {
+    content: '❦';
+    position: absolute;
+    top: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--gold);
+    z-index: 2;
+}
+
+.hero-video { width: 100%; height: 100%; object-fit: cover; }
 
 .video-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(242, 92, 147, 0.1) 0%, rgba(242, 215, 182, 0.1) 100%);
+    background: linear-gradient(160deg, rgba(20, 16, 27, 0.05) 0%, rgba(20, 16, 27, 0.22) 100%);
     pointer-events: none;
 }
 
 /* ===================================
-   CLIENTS CAROUSEL
+   CARRUSEL DE CLIENTES · PASEO DE ARCOS
    =================================== */
 .testimonials-carousel {
-    padding: 60px 0;
-    background: var(--gradient-dark);
+    padding: 96px 0 104px;
+    background: var(--cream);
     overflow: hidden;
+    position: relative;
+}
+
+/* Rótulo superior generado por CSS */
+.testimonials-carousel::before {
+    content: 'Momentos de nuestros clientes';
+    display: block;
+    text-align: center;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.42em;
+    color: var(--gold-dark);
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+}
+
+.testimonials-carousel::after {
+    content: '';
+    position: absolute;
+    top: 58px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .carousel-track {
     display: flex;
-    gap: 2rem;
-    animation: scroll 25s linear infinite;
+    gap: 2.4rem;
+    margin-top: 56px;
+    width: max-content;
+    animation: scroll 32s linear infinite;
 }
 
+.testimonials-carousel:hover .carousel-track { animation-play-state: paused; }
+
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 .testimonial-card {
-    flex: 0 0 280px;
-    height: 280px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
+    flex: 0 0 230px;
+    height: 300px;
+    background: #fff;
+    border-radius: var(--arch);
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    box-shadow:
+        0 0 0 6px #fff,
+        0 0 0 7px rgba(201, 168, 106, 0.45),
+        var(--shadow-md);
+    transition: transform var(--transition-normal);
 }
 
-.testimonial-card:hover {
-    transform: scale(1.05);
-    border-color: var(--color-primary);
-}
+.testimonial-card:nth-child(even) { margin-top: 42px; }
 
-.testimonial-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+.testimonial-card:hover { transform: translateY(-8px); }
+
+.testimonial-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ===================================
-   CATEGORIES SECTION
+   CATEGORÍAS · FILAS EDITORIALES
    =================================== */
 .categories-section {
-    padding: 100px 0;
-    background: var(--color-light);
+    padding: 120px 0;
+    background: var(--warm-white);
+    counter-reset: catnum;
 }
 
-.section-header {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto 60px;
-}
+.section-header { text-align: center; max-width: 720px; margin: 0 auto 80px; }
 
 .section-header h2 {
     font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--color-dark);
-    margin-bottom: 1rem;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -1.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 1px;
+    background: var(--gold);
 }
 
 .section-header p {
-    font-size: 1.125rem;
+    font-size: 1.06rem;
     color: var(--color-text-light);
     font-weight: 300;
+    line-height: 1.9;
 }
 
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
-}
+.categories-grid { display: flex; flex-direction: column; gap: 90px; }
 
 .category-card {
-    background: var(--color-light);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-normal);
+    counter-increment: catnum;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 64px;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    position: relative;
+    transition: none;
 }
 
-.category-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-}
+.category-card:hover { transform: none; box-shadow: none; }
 
+/* Invierte el lado en filas pares */
+.category-card:nth-child(even) { direction: rtl; }
+.category-card:nth-child(even) > * { direction: ltr; }
+
+/* Imagen en arco grande con marco dorado */
 .category-image {
     position: relative;
-    height: 280px;
+    aspect-ratio: 4 / 3;
+    height: auto;
+    border-radius: var(--arch);
     overflow: hidden;
+    box-shadow:
+        0 0 0 9px #fff,
+        0 0 0 10px rgba(201, 168, 106, 0.5),
+        var(--shadow-lg);
 }
 
 .category-image img {
@@ -358,179 +482,167 @@ a {
     transition: transform var(--transition-slow);
 }
 
-.category-card:hover .category-image img {
-    transform: scale(1.1);
-}
+.category-card:hover .category-image img { transform: scale(1.06); }
 
-.category-content {
-    padding: 2rem;
+.category-content { padding: 0 1rem; position: relative; }
+
+/* Numeración editorial 01, 02, 03… */
+.category-content::before {
+    content: counter(catnum, decimal-leading-zero);
+    display: block;
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 4.4rem;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-primary);
+    margin-bottom: 0.6rem;
 }
 
 .category-content h2 {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
-    color: var(--color-dark);
-    margin-bottom: 1rem;
+    font-size: 1.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+    letter-spacing: -0.01em;
 }
 
 .category-content p {
     color: var(--color-text-light);
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-    font-size: 0.95rem;
-}
-
-/* ===================================
-   CTA SECTION
-   =================================== */
-.cta-section {
-    padding: 100px 0;
-    background: var(--gradient-primary);
-    text-align: center;
-}
-
-.cta-content h2 {
-    font-family: var(--font-heading);
-    font-size: 3rem;
-    color: var(--color-light);
-    margin-bottom: 1rem;
-}
-
-.cta-content p {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
+    line-height: 1.9;
+    font-size: 0.98rem;
     font-weight: 300;
 }
 
+/* ===================================
+   CTA · SALÓN NOCTURNO
+   =================================== */
+.cta-section {
+    padding: 130px 0;
+    background: var(--ink);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 35%, rgba(242, 92, 147, 0.22) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* Marco interior dorado */
+.cta-section::before {
+    content: '❦';
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(201, 168, 106, 0.22);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 0;
+    padding-top: 26px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cta-content { position: relative; z-index: 2; }
+
+.cta-content h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--warm-white);
+    margin-bottom: 1.3rem;
+    line-height: 1.18;
+    max-width: 16em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-content p {
+    font-size: 1.12rem;
+    color: rgba(253, 252, 251, 0.78);
+    margin-bottom: 2.8rem;
+    font-weight: 300;
+    max-width: 38em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .cta-section .btn-primary {
-    background: var(--color-light);
-    color: var(--color-primary);
+    background: var(--warm-white);
+    color: var(--ink);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
 .cta-section .btn-primary:hover {
-    background: var(--color-dark);
-    color: var(--color-light);
+    background: var(--gold);
+    color: var(--ink);
 }
 
 /* ===================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    =================================== */
 @media (max-width: 1024px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .hero-left h1 {
-        font-size: 3rem;
-    }
-    
-    .categories-grid {
-        grid-template-columns: 1fr;
-    }
+    .hero-content { grid-template-columns: 1fr; gap: 56px; }
+    .hero-left::before { font-size: clamp(4rem, 18vw, 7rem); }
+    .category-card { grid-template-columns: 1fr; gap: 32px; }
+    .category-card:nth-child(even) { direction: ltr; }
+    .category-content { padding: 0; }
 }
 
 @media (max-width: 768px) {
-    .hero-left h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-description {
-        font-size: 1rem;
-    }
-    
-    .section-header h2 {
-        font-size: 2.25rem;
-    }
-    
-    .cta-content h2 {
-        font-size: 2rem;
-    }
-    
-    .btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .category-content h2 {
-        font-size: 1.5rem;
-    }
+    .hero-section { padding: 130px 0 70px; }
+    .hero-description { font-size: 1rem; }
+    .section-header h2 { font-size: 2.1rem; }
+    .cta-content h2 { font-size: 2rem; }
+    .category-content::before { font-size: 3.4rem; }
+    .category-content h2 { font-size: 1.6rem; }
 }
 
 @media (max-width: 480px) {
-    .hero-section {
-        padding: 100px 0 60px;
-    }
-    
-    .hero-left h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-    }
-    
-    .btn {
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .testimonial-card {
-        flex: 0 0 240px;
-        height: 240px;
-    }
+    .hero-section { padding: 110px 0 56px; }
+    .hero-buttons { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+    .testimonial-card { flex: 0 0 200px; height: 260px; }
 }
 
 /* ===================================
-   ANIMACIONES ADICIONALES
+   ANIMACIONES (solo transform/opacity)
    =================================== */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left > * { animation: fadeIn 0.8s ease forwards; }
+.hero-left h1 { animation-delay: 0.1s; }
+.hero-description { animation-delay: 0.2s; }
+.hero-buttons { animation-delay: 0.3s; }
+
+/* Respeta reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-left > * {
-    animation: fadeIn 0.8s ease forwards;
-}
-
-.hero-left h1 {
-    animation-delay: 0.1s;
-}
-
-.hero-description {
-    animation-delay: 0.2s;
-}
-
-.hero-buttons {
-    animation-delay: 0.3s;
+    .carousel-track { animation: none !important; }
 }
 
 /* ===================================
    UTILIDADES
    =================================== */
-.text-center {
-    text-align: center;
-}
-
-.mb-1 {
-    margin-bottom: 1rem;
-}
-
-.mb-2 {
-    margin-bottom: 2rem;
-}
-
-.mt-1 {
-    margin-top: 1rem;
-}
-
-.mt-2 {
-    margin-top: 2rem;
-}
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }

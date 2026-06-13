@@ -1,7 +1,7 @@
 <style>
 .service-areas-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    padding: 110px 0;
+    background: #F8F5F0;
 }
 
 .service-areas-container {
@@ -18,22 +18,42 @@
 .service-areas-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
-    color: #0D0D0D;
-    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #14101B;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.service-areas-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 1px;
+    background: #C9A86A;
 }
 
 .service-areas-header p {
-    font-size: 1.125rem;
-    color: #666;
+    font-size: 1.06rem;
+    color: #6B6375;
+    font-weight: 300;
     max-width: 700px;
     margin: 0 auto;
+    line-height: 1.9;
 }
 
 .city-name {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #F25C93;
-    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #A8853F;
+    margin-bottom: 2.5rem;
     text-align: center;
 }
 
@@ -45,11 +65,12 @@
 }
 
 .locality-item {
-    background: white;
+    background: #FDFCFB;
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    border: 1px solid rgba(22, 18, 28, 0.09);
+    box-shadow: 0 4px 18px rgba(20, 16, 27, 0.04);
+    transition: all 0.35s ease;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -57,43 +78,51 @@
 
 .locality-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(242, 92, 147, 0.15);
+    border-color: rgba(201, 168, 106, 0.4);
+    box-shadow: 0 14px 36px rgba(20, 16, 27, 0.08);
 }
 
 .locality-icon {
-    font-size: 2rem;
-    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
-    width: 50px;
-    height: 50px;
+    font-size: 1.4rem;
+    background: #FBEFF4;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.6);
 }
 
 .locality-info h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 1.125rem;
     font-weight: 600;
-    color: #0D0D0D;
+    color: #14101B;
     margin-bottom: 0.25rem;
 }
 
 .locality-info p {
-    font-size: 0.875rem;
-    color: #666;
+    font-size: 0.78rem;
+    color: #6B6375;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
 }
 
 .coverage-badge {
     display: inline-block;
-    background: linear-gradient(135deg, #F2D7B6 0%, #F2E6D8 100%);
-    color: #0D0D0D;
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-top: 2rem;
-    box-shadow: 0 4px 12px rgba(242, 215, 182, 0.3);
+    background: #14101B;
+    color: #FDFCFB;
+    padding: 0.7rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-top: 2.5rem;
+    box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.6), 0 10px 26px rgba(20, 16, 27, 0.14);
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,7 @@
 <style>
 .contact-info-section {
-    padding: 80px 0;
-    background: white;
+    padding: 100px 0;
+    background: var(--cream, #F8F5F0);
 }
 
 .contact-info-container {
@@ -18,13 +18,29 @@
 .contact-header h2 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
-    color: #0D0D0D;
-    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #14101B;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.contact-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 1px;
+    background: #C9A86A;
 }
 
 .contact-header p {
-    font-size: 1.125rem;
-    color: #666;
+    font-size: 1.06rem;
+    color: #6B6375;
+    font-weight: 300;
 }
 
 .contact-content {
@@ -41,17 +57,18 @@
 }
 
 .contact-card {
-    background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+    background: #FDFCFB;
     padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border-left: 4px solid #F25C93;
+    border-radius: 4px 16px 16px 4px;
+    box-shadow: 0 12px 36px rgba(20, 16, 27, 0.06);
+    transition: all 0.35s ease;
+    border-left: 3px solid #F25C93;
 }
 
 .contact-card:hover {
     transform: translateX(8px);
-    box-shadow: 0 8px 24px rgba(242, 92, 147, 0.15);
+    border-left-color: #C9A86A;
+    box-shadow: 0 18px 48px rgba(20, 16, 27, 0.10);
 }
 
 .contact-card-header {
@@ -62,21 +79,23 @@
 }
 
 .contact-icon {
-    font-size: 2rem;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
-    border-radius: 12px;
+    font-size: 1.6rem;
+    width: 58px;
+    height: 58px;
+    background: #FBEFF4;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(242, 92, 147, 0.3);
+    box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.6);
 }
 
 .contact-card-header h3 {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
-    color: #0D0D0D;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #14101B;
 }
 
 .contact-card-content {
@@ -85,13 +104,13 @@
 }
 
 .contact-card-content a {
-    color: #F25C93;
-    font-weight: 600;
+    color: #B5456E;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .contact-card-content a:hover {
-    color: #F27EA9;
+    color: #A8853F;
 }
 
 .contact-actions {
@@ -102,40 +121,43 @@
 
 .contact-btn {
     flex: 1;
-    padding: 0.875rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
     text-align: center;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 22px rgba(20, 16, 27, 0.10);
 }
 
 .contact-btn-primary {
-    background: linear-gradient(135deg, #F25C93 0%, #F27EA9 100%);
+    background: linear-gradient(135deg, #F25C93 0%, #B5456E 100%);
     color: white;
 }
 
 .contact-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(242, 92, 147, 0.3);
+    box-shadow: 0 14px 30px rgba(181, 69, 110, 0.3);
 }
 
 .contact-btn-whatsapp {
-    background: #25D366;
+    background: #1EBE5D;
     color: white;
 }
 
 .contact-btn-whatsapp:hover {
-    background: #128C7E;
+    background: #169549;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 14px 30px rgba(22, 149, 73, 0.3);
 }
 
 .map-container {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0 1px rgba(201, 168, 106, 0.6), 0 18px 48px rgba(20, 16, 27, 0.12);
     height: 100%;
     min-height: 500px;
 }
@@ -158,8 +180,9 @@
 }
 
 .map-overlay h4 {
+    font-family: 'Playfair Display', serif;
     font-weight: 600;
-    color: #F25C93;
+    color: #A8853F;
     margin-bottom: 0.25rem;
 }
 
