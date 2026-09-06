@@ -1,6 +1,6 @@
 // ===================================
 // FUNCIONES DEL CATÁLOGO
-// Floristeria Toda Ocasion
+// Familia de los Pétalos
 // ===================================
 
 let currentFilter = 'all';
@@ -181,7 +181,7 @@ function orderProduct(code, name, price, image) {
     }
 
     const message = `Hola, me interesa el ramo *${code} - ${name}* con un precio de ${formattedPrice}. ¿Podrían darme más información?${photoLine}`;
-    const whatsappUrl = `https://wa.me/573148624244?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/573108970263?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
 
