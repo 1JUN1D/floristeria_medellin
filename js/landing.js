@@ -1,5 +1,5 @@
 // ===================================
-// LANDING PAGE JS - Familia de los Pétalos Medellín
+// LANDING PAGE JS - Familia en Pétalos Medellín
 // Catálogo con prioridad por categoría + Conversiones Google Ads
 // ===================================
 

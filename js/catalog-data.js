@@ -1,6 +1,6 @@
 // ===================================
 // DATOS COMPLETOS DEL CATÁLOGO
-// Familia de los Pétalos - Medellín
+// Familia en Pétalos - Medellín
 // ===================================
 
 const products = [

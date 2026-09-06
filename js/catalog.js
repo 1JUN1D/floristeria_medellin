@@ -1,6 +1,6 @@
 // ===================================
 // FUNCIONES DEL CATÁLOGO
-// Familia de los Pétalos
+// Familia en Pétalos
 // ===================================
 
 let currentFilter = 'all';
