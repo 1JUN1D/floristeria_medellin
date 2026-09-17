@@ -30,5 +30,18 @@ const products = [
     { id: 24, code: "024", category: "Rosas y Girasoles", name: "Sol de Media Tarde", description: "Girasoles con rosas rojas y gypsophila en papel negro con borde blanco. Alegre y romántico al mismo tiempo, acierta con mamá, con la pareja o con una amiga.", price: 101000, image: "assets/catalog/24.webp" },
     { id: 25, code: "025", category: "Cajas de Rosas con Chocolates", name: "Cofre Negro con Ferrero", description: "Rosas rojas sobre cama de gypsophila en caja negra con moño dorado y bombones Ferrero. Sobrio, elegante y con el detalle dulce que remata el gesto.", price: 153000, image: "assets/catalog/25.webp" },
     { id: 26, code: "026", category: "Combinación de Rosas", name: "Sencillo y Sincero", description: "Rosas rojas entre margaritas blancas en papel crema con moño de organza. La opción cómoda para decir gracias, perdón o \"me acordé de ti\".", price: 69000, image: "assets/catalog/26.webp" },
-    { id: 27, code: "027", category: "Rosas Rojas", name: "Rojo Profundo", description: "Rosas rojas envueltas en nube de gypsophila y papel negro mate. El ramo clásico de aniversario, con la presentación que lo hace ver el doble de valioso.", price: 148000, image: "assets/catalog/27.webp" }
+    { id: 27, code: "027", category: "Rosas Rojas", name: "Rojo Profundo", description: "Rosas rojas envueltas en nube de gypsophila y papel negro mate. El ramo clásico de aniversario, con la presentación que lo hace ver el doble de valioso.", price: 148000, image: "assets/catalog/27.webp" },
+    { id: 28, code: "028", category: "Rosas con Chocolates", name: "Jardín de Ferrero", description: "Rosas rosadas, lirios blancos y astromelias en presentación de árbol sobre base de follaje, con corazón de Ferrero Rocher y lazo rosa dorado. Elegante, dulce y listo para lucirse en la mesa sin necesidad de florero.", price: 187500, image: "assets/catalog/28.webp" },
+    { id: 29, code: "029", category: "Combinación de Rosas", name: "Love en Rosa", description: "Rosas rosadas y blancas entre astromelias y eucalipto, envueltas en papel rosa con letras de amor y rematadas con moño negro. Fresco y romántico, ideal para una sorpresa que se ve tan bien como huele.", price: 187500, image: "assets/catalog/29.webp" },
+    { id: 30, code: "030", category: "Rosas Rojas", name: "Rojo y Blanco", description: "Rosas rojas con crisantemos blancos y solidago dorado en papel rosa con filo dorado y moño rojo. Un ramo sencillo y de buen tamaño para decir gracias, felicitar o recordarle que piensas en ella.", price: 69000, image: "assets/catalog/30.webp" },
+    { id: 31, code: "031", category: "Girasoles", name: "Sol Radiante", description: "Girasoles grandes con margaritas amarillas y solidago, envueltos en papel negro y amarillo con moño de raso. Alegría pura en un ramo que llena de luz cualquier espacio desde el momento de la entrega.", price: 56000, image: "assets/catalog/31.webp", promo: { label: "En promoción", until: "2026-09-21T23:59:59-05:00" } },
+    { id: 32, code: "032", category: "Lirios", name: "Lirios de Primavera", description: "Lirios rosados y snapdragons entre solidago y follaje, envueltos en papel kraft con cinta de corazones. Un ramo alto y delicado que sigue abriendo sus flores durante días después de llegar.", price: 187500, image: "assets/catalog/32.webp" }
 ];
+
+// Promoción destacada (flyer flotante). Se deja de mostrar automáticamente después de la fecha "until".
+const promoFlyer = {
+    productId: 31,
+    title: "¡Arreglo en promoción!",
+    subtitle: "Solo hasta el 21 de septiembre",
+    autoCloseSeconds: 5
+};

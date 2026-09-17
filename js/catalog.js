@@ -54,11 +54,26 @@ function renderProducts() {
     });
 }
 
+// ¿La promoción del producto sigue vigente?
+function isPromoActive(product) {
+    if (!product.promo || !product.promo.until) return false;
+    return new Date(product.promo.until).getTime() > Date.now();
+}
+
 // Crear tarjeta de producto
 function createProductCard(product) {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.setAttribute('data-category', product.category);
+
+    const promoActive = isPromoActive(product);
+    if (promoActive) card.classList.add('product-card--promo');
+    const promoRibbon = promoActive
+        ? `<span class="promo-ribbon">${product.promo.label || 'En promoción'}</span>`
+        : '';
+    const promoNote = promoActive
+        ? `<span class="promo-note">Precio especial hasta el ${formatPromoDate(product.promo.until)}</span>`
+        : '';
 
     const formattedPrice = new Intl.NumberFormat('es-CO', {
         style: 'currency',
@@ -68,6 +83,7 @@ function createProductCard(product) {
 
     card.innerHTML = `
         <div class="product-image-container" onclick="openLightbox('${product.image}', 'COD_${product.code} - ${product.name}', '${formattedPrice}')">
+            ${promoRibbon}
             <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
             <div class="zoom-icon">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,8 +96,9 @@ function createProductCard(product) {
             <p class="product-description">${product.description}</p>
             <div class="product-footer">
                 <div>
-                    <span class="price-label">Precio</span>
+                    <span class="price-label">${promoActive ? 'Precio promoción' : 'Precio'}</span>
                     <div class="product-price">${formattedPrice}</div>
+                    ${promoNote}
                     <span class="product-badge">COD_${product.code}</span>
                 </div>
                 <a href="#" class="btn-order" onclick="orderProduct('COD_${product.code}', '${product.name}', ${product.price}, '${product.image}'); return false;">
@@ -95,6 +112,11 @@ function createProductCard(product) {
     `;
 
     return card;
+}
+
+// Formatear fecha de fin de promoción (ej: "21 de septiembre")
+function formatPromoDate(iso) {
+    return new Date(iso).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
 }
 
 // Filtrar productos
