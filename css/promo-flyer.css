@@ -1,15 +1,321 @@
 /* =====================================================
-   FLYER FLOTANTE DE PROMOCIÓN · Familia en Pétalos
-   Se muestra al cargar y se cierra solo (ver js/promo-flyer.js)
+   ARREGLOS DE LA SEMANA · Familia en Pétalos
+   Sección destacada + flyer flotante (ver js/promo-flyer.js)
    ===================================================== */
-.promo-flyer {
+
+/* ---------- SECCIÓN DESTACADA ---------- */
+.weekly-deals {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 0 80px;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(199, 58, 110, 0.35) 0%, transparent 30%),
+        radial-gradient(circle at 92% 88%, rgba(212, 169, 95, 0.22) 0%, transparent 32%),
+        linear-gradient(160deg, #2E1114 0%, #4A1E27 100%);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    scroll-margin-top: 90px;
+}
+
+.weekly-deals::before {
+    content: 'Semana';
+    position: absolute;
+    top: 18px;
+    right: -1rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(5rem, 14vw, 12rem);
+    line-height: 1;
+    color: rgba(246, 201, 214, 0.06);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.weekly-deals .container { position: relative; z-index: 1; }
+
+.weekly-deals__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.weekly-deals__intro { max-width: 560px; }
+
+.weekly-deals__eyebrow {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: #C73A6E;
+    color: #fff;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px rgba(199, 58, 110, 0.4);
+}
+
+.weekly-deals__title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.2vw, 3.1rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #fff;
+    margin: 0 0 0.6rem;
+}
+
+.weekly-deals__text {
+    color: #F6C9D6;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.weekly-deals__timer { text-align: center; }
+
+.weekly-deals__timer-label,
+.weekly-deals__timer-foot {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D4A95F;
+}
+
+.weekly-deals__timer-label { margin-bottom: 0.6rem; }
+.weekly-deals__timer-foot { margin-top: 0.6rem; color: rgba(246, 201, 214, 0.75); letter-spacing: 0.12em; text-transform: none; font-size: 0.78rem; }
+
+.weekly-deals__countdown { display: flex; gap: 0.6rem; justify-content: center; }
+
+.weekly-deals__unit {
+    min-width: 74px;
+    padding: 0.75rem 0.5rem 0.6rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: inset 0 0 0 1px rgba(212, 169, 95, 0.55);
+}
+
+.weekly-deals__unit b {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1;
+    color: #FADED9;
+    font-variant-numeric: tabular-nums;
+}
+
+.weekly-deals__unit span {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D4A95F;
+}
+
+.weekly-deals__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tarjeta de oferta */
+.deal-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    color: #3A2A2C;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.deal-card:hover { transform: translateY(-6px); box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35); }
+
+.deal-card__media {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #FDF5F7;
+    cursor: zoom-in;
+    overflow: hidden;
+}
+
+.deal-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.deal-card:hover .deal-card__media img { transform: scale(1.05); }
+
+.deal-card__off {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 1;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #C73A6E;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.85), 0 8px 20px rgba(199, 58, 110, 0.4);
+}
+
+.deal-card__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.3rem 1.3rem 1.4rem;
+}
+
+.deal-card__code {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    color: #8A4560;
+    font-weight: 500;
+}
+
+.deal-card__name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2E1114;
+    margin: 0.25rem 0 0.5rem;
+    line-height: 1.2;
+}
+
+.deal-card__desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: #7A6568;
+    margin: 0 0 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.deal-card__prices {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.deal-card__prices small {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.deal-card__old { color: #7A6568; font-size: 0.95rem; }
+
+.deal-card__old s {
+    text-decoration: line-through;
+    text-decoration-color: #C73A6E;
+    text-decoration-thickness: 2px;
+}
+
+.deal-card__old small { margin-bottom: 0.2rem; }
+
+.deal-card__new {
+    font-family: 'Playfair Display', serif;
+    color: #9E2553;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.deal-card__new small { color: #C73A6E; margin-bottom: 0.2rem; }
+
+.deal-card__save {
+    display: inline-block;
+    align-self: flex-start;
+    margin: 0.7rem 0 1rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    background: #FBE7EE;
+    color: #9E2553;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.deal-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: none;
+    border-radius: 999px;
+    background: #1EBE5D;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(30, 190, 93, 0.28);
+    transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.deal-card__btn:hover { background: #169549; transform: translateY(-2px); }
+.deal-card__btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+@media (max-width: 1100px) {
+    .weekly-deals__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+    .weekly-deals { padding: 52px 0 56px; }
+    .weekly-deals__head { flex-direction: column; align-items: stretch; text-align: center; gap: 1.4rem; margin-bottom: 1.8rem; }
+    .weekly-deals__intro { max-width: none; }
+    .weekly-deals__unit { min-width: 0; flex: 1; padding: 0.6rem 0.3rem 0.5rem; }
+    .weekly-deals__unit b { font-size: 1.6rem; }
+    .weekly-deals__grid { gap: 0.8rem; }
+    .deal-card { border-radius: 18px; }
+    .deal-card__off { width: 46px; height: 46px; font-size: 0.8rem; top: 8px; right: 8px; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85); }
+    .deal-card__body { padding: 0.85rem 0.8rem 0.95rem; }
+    .deal-card__name { font-size: 1.02rem; }
+    .deal-card__desc { display: none; }
+    .deal-card__prices { gap: 0.15rem 0.6rem; }
+    .deal-card__old { font-size: 0.78rem; }
+    .deal-card__new { font-size: 1.3rem; }
+    .deal-card__save { font-size: 0.64rem; padding: 0.25rem 0.55rem; margin: 0.55rem 0 0.75rem; }
+    .deal-card__btn { padding: 0.75rem 0.4rem; font-size: 0.62rem; letter-spacing: 0.06em; }
+    .deal-card__btn svg { width: 15px; height: 15px; }
+    .deal-card__btn-long { display: none; }
+    .deal-card__prices small { font-size: 0.55rem; }
+}
+
+/* ---------- FLYER FLOTANTE ---------- */
+.wk-flyer {
     position: fixed;
     inset: 0;
     z-index: 10000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.25rem;
+    padding: 1rem;
     background: rgba(46, 17, 20, 0.72);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
@@ -18,173 +324,160 @@
     transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
-.promo-flyer.is-open { opacity: 1; visibility: visible; }
+.wk-flyer.is-open { opacity: 1; visibility: visible; }
 
-.promo-flyer__card {
+.wk-flyer__card {
     position: relative;
     width: 100%;
-    max-width: 760px;
-    max-height: calc(100vh - 2.5rem);
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: #fff;
+    max-width: 880px;
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 2rem 2rem 1.6rem;
     border-radius: 28px;
+    background:
+        radial-gradient(circle at 92% 6%, rgba(246, 201, 214, 0.6) 0%, transparent 30%),
+        radial-gradient(circle at 4% 96%, rgba(212, 169, 95, 0.16) 0%, transparent 28%),
+        linear-gradient(180deg, #FFFFFF 0%, #FDF5F7 100%);
     box-shadow: 0 0 0 2px #F6C9D6, 0 0 0 9px #fff, 0 30px 80px rgba(46, 17, 20, 0.45);
     transform: translateY(24px) scale(0.96);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     font-family: 'Poppins', sans-serif;
     color: #3A2A2C;
-}
-
-.promo-flyer.is-open .promo-flyer__card { transform: translateY(0) scale(1); }
-
-.promo-flyer__media {
-    position: relative;
-    min-height: 100%;
-    background: #FDF5F7;
-}
-
-.promo-flyer__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.promo-flyer__tag {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: #C73A6E;
-    color: #fff;
-    padding: 0.45rem 1rem;
-    border-radius: 999px;
-    font-size: 0.66rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    box-shadow: 0 8px 20px rgba(199, 58, 110, 0.35);
-}
-
-.promo-flyer__body {
-    padding: 2rem 1.9rem 1.6rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     text-align: center;
-    background:
-        radial-gradient(circle at 90% 10%, rgba(246, 201, 214, 0.55) 0%, transparent 32%),
-        linear-gradient(180deg, #FFFFFF 0%, #FDF5F7 100%);
 }
 
-.promo-flyer__eyebrow {
+.wk-flyer.is-open .wk-flyer__card { transform: translateY(0) scale(1); }
+
+.wk-flyer__eyebrow {
     font-size: 0.66rem;
     text-transform: uppercase;
-    letter-spacing: 0.36em;
+    letter-spacing: 0.32em;
     color: #C73A6E;
     font-weight: 500;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 
-.promo-flyer__title {
+.wk-flyer__title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 2.6vw, 1.9rem);
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
     color: #2E1114;
     font-weight: 600;
-    line-height: 1.2;
-    margin: 0 0 0.35rem;
+    line-height: 1.15;
+    margin: 0 0 0.3rem;
 }
 
-.promo-flyer__product {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: #8A4560;
-    font-size: 1.05rem;
-    margin: 0 0 1rem;
-}
+.wk-flyer__subtitle { font-size: 0.85rem; color: #8A4560; margin: 0 0 1rem; }
 
-.promo-flyer__price {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.3rem;
-    color: #9E2553;
-    font-weight: 600;
-    line-height: 1;
-    margin-bottom: 0.25rem;
-}
+.wk-flyer__countdown { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.4rem; }
 
-.promo-flyer__old-price {
-    color: #7A6568;
-    text-decoration: line-through;
-    font-size: 0.95rem;
-    margin-bottom: 0.25rem;
-}
-
-.promo-flyer__subtitle {
-    font-size: 0.8rem;
-    color: #8A4560;
-    margin-bottom: 1.1rem;
-    font-weight: 400;
-}
-
-/* Contador */
-.promo-flyer__countdown {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
-}
-
-.promo-flyer__unit {
+.wk-flyer__unit {
     min-width: 58px;
-    padding: 0.55rem 0.4rem 0.45rem;
+    padding: 0.5rem 0.4rem 0.4rem;
     background: #2E1114;
-    color: #fff;
     border-radius: 14px;
     box-shadow: inset 0 0 0 1px rgba(212, 169, 95, 0.55);
 }
 
-.promo-flyer__unit b {
+.wk-flyer__unit b {
     display: block;
     font-family: 'Playfair Display', serif;
-    font-size: 1.55rem;
+    font-size: 1.45rem;
     font-weight: 600;
     line-height: 1;
     color: #FADED9;
     font-variant-numeric: tabular-nums;
 }
 
-.promo-flyer__unit span {
+.wk-flyer__unit span {
     display: block;
-    margin-top: 0.3rem;
-    font-size: 0.55rem;
+    margin-top: 0.28rem;
+    font-size: 0.52rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #D4A95F;
 }
 
-.promo-flyer__cta {
+.wk-flyer__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-bottom: 1.3rem;
+}
+
+.wk-flyer__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 0.8rem;
+    border: none;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(158, 37, 83, 0.12), 0 10px 24px rgba(46, 17, 20, 0.08);
+    font-family: inherit;
+    color: inherit;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.wk-flyer__item:hover { transform: translateY(-4px); box-shadow: 0 0 0 2px #C73A6E, 0 14px 30px rgba(199, 58, 110, 0.2); }
+
+.wk-flyer__img { position: relative; display: block; width: 100%; aspect-ratio: 1 / 1; background: #FDF5F7; margin-bottom: 0.6rem; }
+.wk-flyer__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.wk-flyer__off {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: #C73A6E;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(199, 58, 110, 0.35);
+}
+
+.wk-flyer__name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #2E1114;
+    padding: 0 0.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.35rem;
+}
+
+.wk-flyer__old { font-size: 0.78rem; color: #7A6568; text-decoration: line-through; text-decoration-color: #C73A6E; }
+
+.wk-flyer__new { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: #9E2553; line-height: 1.1; }
+
+.wk-flyer__foot { display: flex; flex-direction: column; align-items: center; gap: 0.55rem; }
+
+.wk-flyer__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.95rem 1.8rem;
-    background: #1EBE5D;
+    padding: 0.95rem 1.9rem;
+    background: #C73A6E;
     color: #fff;
     border-radius: 999px;
     text-decoration: none;
     font-size: 0.74rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    box-shadow: 0 10px 24px rgba(30, 190, 93, 0.28);
+    box-shadow: 0 10px 24px rgba(199, 58, 110, 0.3);
     transition: all 0.3s ease;
 }
 
-.promo-flyer__cta:hover { background: #169549; transform: translateY(-2px); color: #fff; }
-.promo-flyer__cta svg { width: 18px; height: 18px; }
+.wk-flyer__cta:hover { background: #9E2553; color: #fff; transform: translateY(-2px); }
 
-.promo-flyer__close {
+.wk-flyer__hint { font-size: 0.72rem; color: #7A6568; }
+
+.wk-flyer__close {
     position: absolute;
     top: 0.8rem;
     right: 0.8rem;
@@ -192,7 +485,7 @@
     height: 38px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     color: #2E1114;
     font-size: 1.4rem;
     line-height: 1;
@@ -205,32 +498,39 @@
     z-index: 2;
 }
 
-.promo-flyer__close:hover { background: #C73A6E; color: #fff; transform: rotate(90deg); }
+.wk-flyer__close:hover { background: #C73A6E; color: #fff; transform: rotate(90deg); }
 
 /* Barra que indica el cierre automático */
-.promo-flyer__timer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+.wk-flyer__timer {
+    position: sticky;
+    bottom: -1.6rem;
+    margin: 1.2rem -2rem -1.6rem;
     height: 4px;
-    width: 100%;
     background: linear-gradient(90deg, #C73A6E, #D4A95F);
     transform-origin: left;
-    transform: scaleX(1);
 }
 
-.promo-flyer.is-open .promo-flyer__timer { animation: promoTimer var(--promo-auto-close, 5s) linear forwards; }
+.wk-flyer.is-open .wk-flyer__timer { animation: wkTimer var(--wk-auto-close, 300s) linear forwards; }
 
-@keyframes promoTimer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes wkTimer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
 
-@media (max-width: 640px) {
-    .promo-flyer__card { grid-template-columns: 1fr; max-width: 400px; border-radius: 22px; }
-    .promo-flyer__media { aspect-ratio: 4 / 3; min-height: 0; }
-    .promo-flyer__body { padding: 1.4rem 1.2rem 1.5rem; }
-    .promo-flyer__unit { min-width: 52px; }
-    .promo-flyer__price { font-size: 2rem; }
+@media (max-width: 760px) {
+    .wk-flyer { padding: 0.75rem; }
+    .wk-flyer__card { padding: 1.4rem 1rem 1.2rem; border-radius: 22px; }
+    .wk-flyer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; margin-bottom: 1rem; }
+    .wk-flyer__img { margin-bottom: 0.45rem; }
+    .wk-flyer__item { padding-bottom: 0.6rem; border-radius: 14px; }
+    .wk-flyer__name { font-size: 0.86rem; }
+    .wk-flyer__new { font-size: 1.1rem; }
+    .wk-flyer__countdown { margin-bottom: 1rem; }
+    .wk-flyer__unit { min-width: 50px; }
+    .wk-flyer__unit b { font-size: 1.25rem; }
+    .wk-flyer__timer { margin: 1rem -1rem -1.2rem; bottom: -1.2rem; }
+    .wk-flyer__title { padding: 0 1.8rem; }
+    .wk-flyer__eyebrow { padding: 0 2.6rem; letter-spacing: 0.2em; line-height: 1.6; }
+    .wk-flyer__img { aspect-ratio: 4 / 3; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .promo-flyer, .promo-flyer__card { transition: none; }
+    .wk-flyer, .wk-flyer__card, .deal-card, .deal-card__media img { transition: none; }
 }

@@ -56,8 +56,7 @@ function renderProducts() {
 
 // ¿La promoción del producto sigue vigente?
 function isPromoActive(product) {
-    if (!product.promo || !product.promo.until) return false;
-    return new Date(product.promo.until).getTime() > Date.now();
+    return typeof getPromoEnd === 'function' && getPromoEnd(product) !== null;
 }
 
 // Crear tarjeta de producto
@@ -72,7 +71,10 @@ function createProductCard(product) {
         ? `<span class="promo-ribbon">${product.promo.label || 'En promoción'}</span>`
         : '';
     const promoNote = promoActive
-        ? `<span class="promo-note">Precio especial hasta el ${formatPromoDate(product.promo.until)}</span>`
+        ? `<span class="promo-note">${product.promo.weekly ? 'Precio especial hasta el domingo' : 'Precio especial hasta el ' + formatPromoDate(product.promo.until)}</span>`
+        : '';
+    const oldPriceHtml = promoActive && product.promo.oldPrice
+        ? `<span class="price-old">Antes ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(product.promo.oldPrice)}</span>`
         : '';
 
     const formattedPrice = new Intl.NumberFormat('es-CO', {
@@ -97,6 +99,7 @@ function createProductCard(product) {
             <div class="product-footer">
                 <div>
                     <span class="price-label">${promoActive ? 'Precio promoción' : 'Precio'}</span>
+                    ${oldPriceHtml}
                     <div class="product-price">${formattedPrice}</div>
                     ${promoNote}
                     <span class="product-badge">COD_${product.code}</span>

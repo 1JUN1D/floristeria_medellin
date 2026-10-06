@@ -939,3 +939,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; letter-spac
         scroll-behavior: auto !important;
     }
 }
+
+/* Precio de antes (arreglos de la semana) */
+.price-block .price-old {
+    display: block;
+    font-size: 0.8rem;
+    color: #7A6568;
+    text-decoration: line-through;
+    text-decoration-color: #C73A6E;
+}

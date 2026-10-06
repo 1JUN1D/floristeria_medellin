@@ -584,3 +584,12 @@
     color: var(--catalog-primary);
     font-weight: 500;
 }
+
+.price-old {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--catalog-gray);
+    text-decoration: line-through;
+    text-decoration-color: var(--catalog-primary);
+    margin-bottom: 0.1rem;
+}
