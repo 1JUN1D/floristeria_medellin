@@ -38,10 +38,10 @@ const products = [
     { id: 32, code: "032", category: "Lirios", name: "Lirios de Primavera", description: "Lirios rosados y snapdragons entre solidago y follaje, envueltos en papel kraft con cinta de corazones. Un ramo alto y delicado que sigue abriendo sus flores durante días después de llegar.", price: 187500, image: "assets/catalog/32.webp" },
     { id: 33, code: "033", category: "Combinación de Rosas", name: "Sueño Lila", description: "Rosas blancas entre crisantemos lila y margaritas moradas, envueltas en papel lavanda con filo dorado y corazones, rematado con moño negro. Delicado y diferente, para sorprender a quien ama los tonos suaves y los detalles con estilo.", price: 150000, image: "assets/catalog/33.webp" },
     { id: 34, code: "034", category: "Rosas Rojas", name: "Orgullo de Grado", description: "Rosas rojas con nube de gypsophila en papel negro con birretes dorados, coronado por un diploma con mini birrete. El ramo perfecto para celebrar su grado y decirle lo orgulloso que estás de todo lo que logró.", price: 187500, image: "assets/catalog/34.webp" },
-    { id: 35, code: "035", category: "Lirios", name: "Pureza de Lirios", description: "Lirios blancos abiertos entre margaritas, snapdragons y follaje verde, envueltos en papel transparente con moño de raso rosado. Elegante y sereno, para dar gracias, acompañar o decir te admiro sin necesidad de palabras.", price: 125000, image: "assets/catalog/35.webp", promo: { label: "Arreglo de la semana", oldPrice: 150000, weekly: true } },
-    { id: 36, code: "036", category: "Combinación de Rosas", name: "Turquesa Real", description: "Rosas blancas con solidago, gypsophila y snapdragons blancos en papel turquesa con filos dorados y moño dorado. Un ramo fresco y distinto que se roba todas las miradas desde el momento en que llega.", price: 88000, image: "assets/catalog/36.webp", promo: { label: "Arreglo de la semana", oldPrice: 105000, weekly: true } },
-    { id: 37, code: "037", category: "Combinación de Rosas", name: "Dulce Encanto", description: "Rosas rosadas y un lirio blanco entre snapdragons, gypsophila y solidago, en papel blanco con puntos dorados y moño rosado. Romántico y luminoso, ideal para un cumpleaños, un aniversario o un te quiero cualquier día.", price: 113000, image: "assets/catalog/37.webp", promo: { label: "Arreglo de la semana", oldPrice: 135000, weekly: true } },
-    { id: 38, code: "038", category: "Gerberas", name: "Alegría Fucsia", description: "Gerberas fucsia con una rosa rosada, snapdragons y gypsophila en caja redonda de terciopelo rosado. Un arreglo compacto y lleno de color que alegra el escritorio, la mesa de noche o la habitación de quien lo recibe.", price: 69000, image: "assets/catalog/38.webp", promo: { label: "Arreglo de la semana", oldPrice: 83000, weekly: true } }
+    { id: 35, code: "035", category: "Lirios", name: "Pureza de Lirios", description: "Lirios blancos abiertos entre margaritas, snapdragons y follaje verde, envueltos en papel transparente con moño de raso rosado. Elegante y sereno, para dar gracias, acompañar o decir te admiro sin necesidad de palabras.", price: 125000, image: "assets/catalog/35.webp" },
+    { id: 36, code: "036", category: "Combinación de Rosas", name: "Turquesa Real", description: "Rosas blancas con solidago, gypsophila y snapdragons blancos en papel turquesa con filos dorados y moño dorado. Un ramo fresco y distinto que se roba todas las miradas desde el momento en que llega.", price: 88000, image: "assets/catalog/36.webp" },
+    { id: 37, code: "037", category: "Combinación de Rosas", name: "Dulce Encanto", description: "Rosas rosadas y un lirio blanco entre snapdragons, gypsophila y solidago, en papel blanco con puntos dorados y moño rosado. Romántico y luminoso, ideal para un cumpleaños, un aniversario o un te quiero cualquier día.", price: 113000, image: "assets/catalog/37.webp" },
+    { id: 38, code: "038", category: "Gerberas", name: "Alegría Fucsia", description: "Gerberas fucsia con una rosa rosada, snapdragons y gypsophila en caja redonda de terciopelo rosado. Un arreglo compacto y lleno de color que alegra el escritorio, la mesa de noche o la habitación de quien lo recibe.", price: 69000, image: "assets/catalog/38.webp" }
 ];
 
 // ===================================
@@ -51,7 +51,7 @@ const products = [
 // Para apagar la promoción: active: false
 // ===================================
 const weeklyPromo = {
-    active: true,
+    active: false,
     productIds: [35, 36, 37, 38],
     title: "Arreglos de la Semana",
     subtitle: "Cuatro diseños con precio especial de lunes a domingo. Pídelos antes de que el contador llegue a cero.",
