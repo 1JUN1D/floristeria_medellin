@@ -11,7 +11,7 @@ const products = [
     { id: 4, code: "004", category: "Anchetas con Flores", tags: ["rosas", "arreglos", "cumpleaños"], name: "Explosión de Consentimiento", description: "Rosas rojas rodeadas de labiales, brillos, perfume y un peluche que la desarma por completo. El detalle más grande del catálogo, para la que merece sentirse la más importante del mundo.", price: 750000, image: "assets/catalog/4.webp" },
     { id: 5, code: "005", category: "Anchetas con Flores", tags: ["rosas", "arreglos"], name: "Cofre de Manzanas y Rosas", description: "Rosas rojas y fruta fresca en cofre de madera, con osito coronado y globos de corazón flotando arriba. Un regalo que se ve, se huele y se saborea al mismo tiempo.", price: 262500, image: "assets/catalog/5.webp" },
     { id: 6, code: "006", category: "Anchetas con Peluche", tags: ["rosas", "arreglos"], name: "Te Quiero Conmigo", description: "Rosas rojas envueltas en papel de gala con un osito que sostiene un corazón. Pequeño en tamaño y enorme en intención, ideal para ese \"pensé en ti\" que no necesita fecha especial.", price: 125000, image: "assets/catalog/6.webp" },
-    { id: 7, code: "007", category: "Girasoles", tags: ["girasoles", "arreglos"], name: "Buenos Días, Sol", description: "Girasoles abiertos con nube de gypsophila y un mensaje que ilumina el día completo. La forma más honesta de decir gracias, ánimo o simplemente \"te quieren\".", price: 87500, image: "assets/catalog/7.webp" },
+    { id: 7, code: "007", category: "Girasoles", tags: ["girasoles", "arreglos"], name: "Buenos Días, Sol", description: "Girasoles abiertos con nube de gypsophila y un mensaje que ilumina el día completo. La forma más honesta de decir gracias, ánimo o simplemente \"te quieren\".", price: 87500, image: "assets/catalog/7.webp", promo: { label: "Oferta solo hoy", price: 55000, oldPrice: 87500, until: "2026-10-17T23:59:59-05:00", note: "Precio especial solo hoy 17 de octubre" } },
     { id: 8, code: "008", category: "Girasoles con Chocolates", tags: ["girasoles", "arreglos", "chocolates"], name: "Sol con Ferrero", description: "Girasoles en corona alrededor de un corazón de Ferrero Rocher, con eucalipto y toques azules. Alegría y dulzura en el mismo gesto, para quien te alegra a ti todos los días.", price: 225000, image: "assets/catalog/8.webp" },
     { id: 9, code: "009", category: "Rosas y Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Fuego y Sol", description: "Rosas rojas apretadas alrededor de un girasol central sobre papel negro y dorado. La combinación que une pasión y alegría, imposible de ignorar en el momento de la entrega.", price: 175000, image: "assets/catalog/9.webp" },
     { id: 10, code: "010", category: "Rosas Rojas", tags: ["rosas", "arreglos"], name: "Reina del Día", description: "Rosas rojas y rosadas con corona y corazón de cristal en el centro, envueltas en rojo con filo dorado. Para la que siempre se pone de última y hoy le toca sentirse primera.", price: 225000, image: "assets/catalog/10.webp" },
@@ -30,12 +30,12 @@ const products = [
     { id: 23, code: "023", category: "Rosas Rojas", tags: ["rosas", "arreglos"], name: "Amor Sin Medida", description: "Un mar de rosas rojas bordeado de gypsophila sobre papel negro mate. Para propuestas, aniversarios grandes y momentos que no admiten término medio.", price: 621000, image: "assets/catalog/23.webp" },
     { id: 24, code: "024", category: "Rosas y Girasoles", tags: ["rosas", "girasoles", "arreglos"], name: "Sol de Media Tarde", description: "Girasoles con rosas rojas y gypsophila en papel negro con borde blanco. Alegre y romántico al mismo tiempo, acierta con mamá, con la pareja o con una amiga.", price: 101000, image: "assets/catalog/24.webp" },
     { id: 25, code: "025", category: "Cajas de Rosas con Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Cofre Negro con Ferrero", description: "Rosas rojas sobre cama de gypsophila en caja negra con moño dorado y bombones Ferrero. Sobrio, elegante y con el detalle dulce que remata el gesto.", price: 153000, image: "assets/catalog/25.webp" },
-    { id: 26, code: "026", category: "Combinación de Rosas", tags: ["rosas", "arreglos"], name: "Sencillo y Sincero", description: "Rosas rojas entre margaritas blancas en papel crema con moño de organza. La opción cómoda para decir gracias, perdón o \"me acordé de ti\".", price: 69000, image: "assets/catalog/26.webp" },
+    { id: 26, code: "026", category: "Combinación de Rosas", tags: ["rosas", "arreglos"], name: "Sencillo y Sincero", description: "Rosas rojas entre margaritas blancas en papel crema con moño de organza. La opción cómoda para decir gracias, perdón o \"me acordé de ti\".", price: 69000, image: "assets/catalog/26.webp", promo: { label: "Oferta solo hoy", price: 55000, oldPrice: 69000, until: "2026-10-17T23:59:59-05:00", note: "Precio especial solo hoy 17 de octubre" } },
     { id: 27, code: "027", category: "Rosas Rojas", tags: ["rosas", "arreglos"], name: "Rojo Profundo", description: "Rosas rojas envueltas en nube de gypsophila y papel negro mate. El ramo clásico de aniversario, con la presentación que lo hace ver el doble de valioso.", price: 148000, image: "assets/catalog/27.webp" },
     { id: 28, code: "028", category: "Rosas con Chocolates", tags: ["rosas", "arreglos", "chocolates"], name: "Jardín de Ferrero", description: "Rosas rosadas, lirios blancos y astromelias en presentación de árbol sobre base de follaje, con corazón de Ferrero Rocher y lazo rosa dorado. Elegante, dulce y listo para lucirse en la mesa sin necesidad de florero.", price: 187500, image: "assets/catalog/28.webp" },
     { id: 29, code: "029", category: "Combinación de Rosas", tags: ["rosas", "arreglos"], name: "Love en Rosa", description: "Rosas rosadas y blancas entre astromelias y eucalipto, envueltas en papel rosa con letras de amor y rematadas con moño negro. Fresco y romántico, ideal para una sorpresa que se ve tan bien como huele.", price: 187500, image: "assets/catalog/29.webp" },
-    { id: 30, code: "030", category: "Rosas Rojas", tags: ["rosas", "arreglos"], name: "Rojo y Blanco", description: "Rosas rojas con crisantemos blancos y solidago dorado en papel rosa con filo dorado y moño rojo. Un ramo sencillo y de buen tamaño para decir gracias, felicitar o recordarle que piensas en ella.", price: 69000, image: "assets/catalog/30.webp" },
-    { id: 31, code: "031", category: "Girasoles", tags: ["girasoles", "arreglos"], name: "Sol Radiante", description: "Girasoles grandes con margaritas amarillas y solidago, envueltos en papel negro y amarillo con moño de raso. Alegría pura en un ramo que llena de luz cualquier espacio desde el momento de la entrega.", price: 56000, image: "assets/catalog/31.webp" },
+    { id: 30, code: "030", category: "Rosas Rojas", tags: ["rosas", "arreglos"], name: "Rojo y Blanco", description: "Rosas rojas con crisantemos blancos y solidago dorado en papel rosa con filo dorado y moño rojo. Un ramo sencillo y de buen tamaño para decir gracias, felicitar o recordarle que piensas en ella.", price: 69000, image: "assets/catalog/30.webp", promo: { label: "Oferta solo hoy", price: 55000, oldPrice: 69000, until: "2026-10-17T23:59:59-05:00", note: "Precio especial solo hoy 17 de octubre" } },
+    { id: 31, code: "031", category: "Girasoles", tags: ["girasoles", "arreglos"], name: "Sol Radiante", description: "Girasoles grandes con margaritas amarillas y solidago, envueltos en papel negro y amarillo con moño de raso. Alegría pura en un ramo que llena de luz cualquier espacio desde el momento de la entrega.", price: 56000, image: "assets/catalog/31.webp", promo: { label: "Oferta solo hoy", price: 55000, oldPrice: 56000, until: "2026-10-17T23:59:59-05:00", note: "Precio especial solo hoy 17 de octubre" } },
     { id: 32, code: "032", category: "Lirios", tags: ["lirios", "arreglos"], name: "Lirios de Primavera", description: "Lirios rosados y snapdragons entre solidago y follaje, envueltos en papel kraft con cinta de corazones. Un ramo alto y delicado que sigue abriendo sus flores durante días después de llegar.", price: 187500, image: "assets/catalog/32.webp" },
     { id: 33, code: "033", category: "Combinación de Rosas", tags: ["rosas", "arreglos", "cumpleaños"], name: "Sueño Lila", description: "Rosas blancas entre crisantemos lila y margaritas moradas, envueltas en papel lavanda con filo dorado y corazones, rematado con moño negro. Delicado y diferente, para sorprender a quien ama los tonos suaves y los detalles con estilo.", price: 150000, image: "assets/catalog/33.webp" },
     { id: 34, code: "034", category: "Rosas Rojas", tags: ["rosas", "arreglos"], name: "Orgullo de Grado", description: "Rosas rojas con nube de gypsophila en papel negro con birretes dorados, coronado por un diploma con mini birrete. El ramo perfecto para celebrar su grado y decirle lo orgulloso que estás de todo lo que logró.", price: 187500, image: "assets/catalog/34.webp" },
@@ -57,6 +57,15 @@ function formatCOP(price) {
     }).format(price);
 }
 
+// --- OFERTAS CON FECHA DE VENCIMIENTO ---
+// Mientras la fecha "until" no haya pasado se muestra promo.price; después vuelve solo el precio normal.
+function isPromoLive(p) {
+    return !!(p.promo && p.promo.until && Date.now() < new Date(p.promo.until).getTime());
+}
+function getCurrentPrice(p) {
+    return isPromoLive(p) && p.promo.price ? p.promo.price : p.price;
+}
+
 // --- ORDENAR PRODUCTOS: primero los de la categoría de la landing, luego el resto.
 // Dentro de cada grupo se ordena por precio ASCENDENTE (menor a mayor).
 function getSortedProducts(priorityTag) {
@@ -69,8 +78,8 @@ function getSortedProducts(priorityTag) {
             rest.push(p);
         }
     });
-    priority.sort((a, b) => a.price - b.price);
-    rest.sort((a, b) => a.price - b.price);
+    priority.sort((a, b) => getCurrentPrice(a) - getCurrentPrice(b));
+    rest.sort((a, b) => getCurrentPrice(a) - getCurrentPrice(b));
     return [...priority, ...rest];
 }
 
@@ -81,12 +90,13 @@ function getFilteredProducts(filter, priorityTag) {
     }
     return products.filter(p =>
         (p.tags && p.tags.includes(filter)) || p.category.toLowerCase().includes(filter)
-    ).sort((a, b) => a.price - b.price);
+    ).sort((a, b) => getCurrentPrice(a) - getCurrentPrice(b));
 }
 
 // --- CREAR TARJETA DE PRODUCTO ---
 function createCard(product) {
-    const price = formatCOP(product.price);
+    const price = formatCOP(getCurrentPrice(product));
+    const live = isPromoLive(product);
     const div = document.createElement('div');
     div.className = 'product-card-landing';
     div.innerHTML = `
@@ -98,12 +108,12 @@ function createCard(product) {
             <p class="desc">${product.description}</p>
             <div class="product-footer-landing">
                 <div class="price-block">
-                    <span class="label">${product.promo && product.promo.oldPrice ? 'Arreglo de la semana' : 'Precio'}</span>
-                    ${product.promo && product.promo.oldPrice ? `<span class="price-old">Antes ${formatCOP(product.promo.oldPrice)}</span>` : ''}
+                    <span class="label">${live ? (product.promo.label || 'Oferta') : 'Precio'}</span>
+                    ${live && product.promo.oldPrice ? `<span class="price-old">Antes ${formatCOP(product.promo.oldPrice)}</span>` : ''}
                     <span class="price">${price}</span>
                     <span class="product-code-badge">COD_${product.code}</span>
                 </div>
-                <a href="#" class="btn-order-landing" onclick="orderWA('COD_${product.code}', '${product.name.replace(/'/g, "\\'")}', ${product.price}, '${product.image}'); return false;">
+                <a href="#" class="btn-order-landing" onclick="orderWA('COD_${product.code}', '${product.name.replace(/'/g, "\\'")}', ${getCurrentPrice(product)}, '${product.image}'); return false;">
                     🛒 Pedir
                 </a>
             </div>

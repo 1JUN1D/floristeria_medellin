@@ -10,7 +10,17 @@ let currentSearch = '';
 document.addEventListener('DOMContentLoaded', function() {
     renderProducts();
     initScrollTop();
+    scheduleExpiryRefresh();
 });
+
+// Si alguien tiene la página abierta cuando vence una oferta, se vuelve a pintar con el precio normal
+function scheduleExpiryRefresh() {
+    if (typeof getPromoEnd !== 'function') return;
+    const ends = products.map(getPromoEnd).filter(e => e !== null);
+    if (!ends.length) return;
+    const wait = Math.min(...ends) - Date.now() + 1000;
+    if (wait > 0 && wait < 2147483647) setTimeout(() => { renderProducts(); scheduleExpiryRefresh(); }, wait);
+}
 
 // Renderizar productos
 function renderProducts() {
@@ -37,7 +47,7 @@ function renderProducts() {
     }
 
     // Ordenar por precio ascendente (menor a mayor)
-    filtered.sort((a, b) => a.price - b.price);
+    filtered.sort((a, b) => getCurrentPrice(a) - getCurrentPrice(b));
 
     if (filtered.length === 0) {
         emptyState.classList.add('active');
@@ -71,7 +81,7 @@ function createProductCard(product) {
         ? `<span class="promo-ribbon">${product.promo.label || 'En promoción'}</span>`
         : '';
     const promoNote = promoActive
-        ? `<span class="promo-note">${product.promo.weekly ? 'Precio especial hasta el domingo' : 'Precio especial hasta el ' + formatPromoDate(product.promo.until)}</span>`
+        ? `<span class="promo-note">${product.promo.note || (product.promo.weekly ? 'Precio especial hasta el domingo' : 'Precio especial hasta el ' + formatPromoDate(product.promo.until))}</span>`
         : '';
     const oldPriceHtml = promoActive && product.promo.oldPrice
         ? `<span class="price-old">Antes ${new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(product.promo.oldPrice)}</span>`
@@ -81,7 +91,7 @@ function createProductCard(product) {
         style: 'currency',
         currency: 'COP',
         minimumFractionDigits: 0
-    }).format(product.price);
+    }).format(getCurrentPrice(product));
 
     card.innerHTML = `
         <div class="product-image-container" onclick="openLightbox('${product.image}', 'COD_${product.code} - ${product.name}', '${formattedPrice}')">
@@ -104,7 +114,7 @@ function createProductCard(product) {
                     ${promoNote}
                     <span class="product-badge">COD_${product.code}</span>
                 </div>
-                <a href="#" class="btn-order" onclick="orderProduct('COD_${product.code}', '${product.name}', ${product.price}, '${product.image}'); return false;">
+                <a href="#" class="btn-order" onclick="orderProduct('COD_${product.code}', '${product.name}', ${getCurrentPrice(product)}, '${product.image}'); return false;">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
                     </svg>
